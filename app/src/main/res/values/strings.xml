@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Ponpes App</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="pesantren_logo">Pesantren Logo</string>
+    <string name="pondok_pesantren_ash_shomadiyah_komplek_tengah">Pondok Pesantren Ash-Shomadiyah Komplek Tengah</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+</resources>
