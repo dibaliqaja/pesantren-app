@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.dibaliqaja.ponpesapp.databinding.ActivityLoginBinding
+import com.dibaliqaja.ponpesapp.helper.Constant
+import com.dibaliqaja.ponpesapp.helper.PreferencesHelper
 import com.dibaliqaja.ponpesapp.model.LoginRequest
 import com.dibaliqaja.ponpesapp.model.LoginResponse
 import com.dibaliqaja.ponpesapp.services.RetrofitClient.apiService
@@ -17,14 +19,26 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var preferencesHelper: PreferencesHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        preferencesHelper = PreferencesHelper(this)
 
         binding.btnLogin.setOnClickListener {
             if (checkFields()) login()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (preferencesHelper.getBoolean(Constant.prefIsLogin)) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 
@@ -42,9 +56,13 @@ class LoginActivity : AppCompatActivity() {
                 if (progressDialog.isShowing) progressDialog.dismiss()
                 if (response.isSuccessful) {
                     val loginResponse = response.body()?.data
-                    Log.e("Response", loginResponse.toString())
-                    finish()
+                    val token: String = loginResponse!!.token
+                    preferencesHelper.put(Constant.prefIsLogin, true)
+                    preferencesHelper.put(Constant.prefToken, token)
+
+                    Toast.makeText(baseContext, "Login success", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(baseContext, MainActivity::class.java))
+                    finish()
                 }
                 else {
                     try {
@@ -66,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 if (progressDialog.isShowing) progressDialog.dismiss()
                 Toast.makeText(baseContext, "Login failed", Toast.LENGTH_SHORT).show()
-                Log.e("Failure", t.message.toString())
+                Log.e("Failure: ", t.message.toString())
             }
 
         })

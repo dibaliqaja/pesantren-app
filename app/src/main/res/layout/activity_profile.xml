@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/profile_placeholder"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="@string/photo" />
+
+            <TextView
+                android:id="@+id/tv_name_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/nama"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="18dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_photo"/>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_tag"/>
+
+            <TextView
+                android:id="@+id/tv_address_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/alamat"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name"/>
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_address_tag"/>
+
+            <TextView
+                android:id="@+id/tv_phone_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/no_hp"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_address"/>
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_phone_tag"/>
+
+            <TextView
+                android:id="@+id/tv_birth_place_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/tempat_lahir"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_phone"/>
+
+            <TextView
+                android:id="@+id/tv_birth_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_birth_place_tag"/>
+
+            <TextView
+                android:id="@+id/tv_birth_date_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/tanggal_lahir"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_birth_place"/>
+
+            <TextView
+                android:id="@+id/tv_birth_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_birth_date_tag"/>
+
+            <TextView
+                android:id="@+id/tv_school_old_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/asal_sekolah"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_birth_date"/>
+
+            <TextView
+                android:id="@+id/tv_school_old"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_school_old_tag"/>
+
+            <TextView
+                android:id="@+id/tv_school_address_old_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/alamat_asal_sekolah"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_school_old"/>
+
+            <TextView
+                android:id="@+id/tv_school_address_old"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_school_address_old_tag"/>
+
+            <TextView
+                android:id="@+id/tv_school_current_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/sekolah_sekarang"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_school_address_old"/>
+
+            <TextView
+                android:id="@+id/tv_school_current"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_school_current_tag"/>
+
+            <TextView
+                android:id="@+id/tv_school_address_current_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/alamat_sekolah_sekarang"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_school_current"/>
+
+            <TextView
+                android:id="@+id/tv_school_address_current"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_school_address_current_tag"/>
+
+            <TextView
+                android:id="@+id/tv_father_name_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/nama_ayah"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_school_address_current"/>
+
+            <TextView
+                android:id="@+id/tv_father_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_father_name_tag"/>
+
+            <TextView
+                android:id="@+id/tv_mother_name_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/nama_ibu"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_father_name"/>
+
+            <TextView
+                android:id="@+id/tv_mother_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mother_name_tag"/>
+
+            <TextView
+                android:id="@+id/tv_parent_phone_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/no_hp_orang_tua"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mother_name"/>
+
+            <TextView
+                android:id="@+id/tv_parent_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_parent_phone_tag"/>
+
+            <TextView
+                android:id="@+id/tv_father_job_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/pekerjaan_ayah"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_parent_phone"/>
+
+            <TextView
+                android:id="@+id/tv_father_job"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_father_job_tag"/>
+
+            <TextView
+                android:id="@+id/tv_mother_job_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/pekerjaan_ibu"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_father_job"/>
+
+            <TextView
+                android:id="@+id/tv_mother_job"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mother_job_tag"/>
+
+            <TextView
+                android:id="@+id/tv_entry_year_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/tahun_masuk"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mother_job"/>
+
+            <TextView
+                android:id="@+id/tv_entry_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_entry_year_tag"/>
+
+            <TextView
+                android:id="@+id/tv_year_out_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/tahun_keluar"
+                android:textSize="17sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_entry_year"/>
+
+            <TextView
+                android:id="@+id/tv_year_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/null_value"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_year_out_tag"/>
+
+            <Button
+                android:id="@+id/btn_edit_profil"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="@string/edit_profil"
+                android:textSize="16sp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_year_out"/>
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="Logout"
+                android:textColor="@color/red_2"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/red_1"
+                app:layout_constraintTop_toBottomOf="@+id/btn_edit_profil"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
