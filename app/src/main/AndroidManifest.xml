@@ -14,7 +14,11 @@
         android:theme="@style/Theme.PonpesApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".ProfileActivity"
+        <activity android:name=".PasswordActivity"
+            android:label="Ubah Password"
+            android:parentActivityName=".MainActivity"  />
+        <activity
+            android:name=".ProfileActivity"
             android:label="Profil Santri"
             android:parentActivityName=".MainActivity" />
         <activity

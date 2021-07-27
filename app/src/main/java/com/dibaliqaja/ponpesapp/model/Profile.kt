@@ -1,6 +1,7 @@
 package com.dibaliqaja.ponpesapp.model
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class ProfileResponse(@SerializedName("data") val data: Profile)
 
@@ -11,7 +12,7 @@ data class Profile(
     @SerializedName("name") val name : String,
     @SerializedName("address") val address : String,
     @SerializedName("birth_place") val birthPlace : String,
-    @SerializedName("birth_date") val birthDate : String,
+    @SerializedName("birth_date") val birthDate : Date,
     @SerializedName("phone") val phone : String,
     @SerializedName("school_old") val schoolOld : String,
     @SerializedName("school_address_old") val schoolAddressOld : String,

@@ -21,24 +21,24 @@
                 android:id="@+id/background_top"
                 android:layout_width="0dp"
                 android:layout_height="270dp"
+                android:contentDescription="@string/background_top"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_background_top"
-                android:contentDescription="@string/background_top" />
+                app:srcCompat="@drawable/ic_background_top" />
 
             <TextView
                 android:id="@+id/salam"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:text="@string/assalamualaikum"
+                android:textColor="@color/white"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -50,8 +50,8 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
                 android:text="@string/selamat_datang"
-                android:textSize="22sp"
                 android:textColor="@color/white"
+                android:textSize="22sp"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/salam" />
@@ -60,14 +60,14 @@
                 android:id="@+id/pesantren_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="22dp"
                 android:layout_marginEnd="24dp"
                 android:text="@string/pondok_pesantren_ash_shomadiyah_komplek_tengah"
-                android:textSize="22sp"
-                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/welcome" />
@@ -95,24 +95,24 @@
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/iv_photo"
                     android:layout_marginStart="18dp"
+                    android:layout_toEndOf="@id/iv_photo"
                     android:text="@string/name"
+                    android:textColor="@color/black_1"
                     android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black_1" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_name"
-                    android:layout_toEndOf="@id/iv_photo"
                     android:layout_marginStart="18dp"
                     android:layout_marginTop="5dp"
+                    android:layout_toEndOf="@id/iv_photo"
                     android:text="@string/email_address"
-                    android:textSize="16sp"
-                    android:textColor="@color/black_1" />
+                    android:textColor="@color/black_1"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
@@ -125,8 +125,8 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="32dp"
-                android:padding="16dp"
                 android:background="@drawable/ic_round_white"
+                android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -138,19 +138,19 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imageView4"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
                     android:text="@string/syahriah"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
                     android:textColor="@color/black_1"
-                    android:layout_marginTop="12dp"/>
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_centerHorizontal="true"
-                    app:srcCompat="@drawable/ic_baseline_menu_book_24"
-                    android:contentDescription="@string/syahriah"/>
+                    android:contentDescription="@string/syahriah"
+                    app:srcCompat="@drawable/ic_baseline_menu_book_24" />
 
             </RelativeLayout>
 
@@ -163,8 +163,8 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="32dp"
-                android:padding="16dp"
                 android:background="@drawable/ic_round_white"
+                android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -176,19 +176,19 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imageView5"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
                     android:text="@string/buku_kas"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
                     android:textColor="@color/black_1"
-                    android:layout_marginTop="12dp"/>
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_centerHorizontal="true"
-                    app:srcCompat="@drawable/ic_baseline_library_books_24"
-                    android:contentDescription="@string/buku_kas"/>
+                    android:contentDescription="@string/buku_kas"
+                    app:srcCompat="@drawable/ic_baseline_library_books_24" />
 
             </RelativeLayout>
 
@@ -201,8 +201,8 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
-                android:padding="16dp"
                 android:background="@drawable/ic_round_white"
+                android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -214,19 +214,19 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imageView6"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
                     android:text="@string/profil"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
                     android:textColor="@color/black_1"
-                    android:layout_marginTop="12dp"/>
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/imageView6"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_centerHorizontal="true"
-                    app:srcCompat="@drawable/ic_baseline_person_24"
-                    android:contentDescription="@string/profil"/>
+                    android:contentDescription="@string/profil"
+                    app:srcCompat="@drawable/ic_baseline_person_24" />
 
             </RelativeLayout>
 
@@ -239,8 +239,8 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
-                android:padding="16dp"
                 android:background="@drawable/ic_round_white"
+                android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -252,19 +252,19 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imageView8"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
                     android:text="@string/password2"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
                     android:textColor="@color/black_1"
-                    android:layout_marginTop="12dp"/>
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/imageView8"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_centerHorizontal="true"
-                    app:srcCompat="@drawable/ic_baseline_vpn_key_24"
-                    android:contentDescription="@string/buku_kas"/>
+                    android:contentDescription="@string/buku_kas"
+                    app:srcCompat="@drawable/ic_baseline_vpn_key_24" />
 
             </RelativeLayout>
 

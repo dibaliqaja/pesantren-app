@@ -42,4 +42,8 @@
     <string name="tahun_masuk">Tahun Masuk</string>
     <string name="tahun_keluar">Tahun Keluar</string>
     <string name="edit_profil">Edit Profil</string>
+    <string name="konfirmasi_password_baru">Konfirmasi Password Baru</string>
+    <string name="password_baru">Password Baru</string>
+    <string name="password_lama">Password Lama</string>
+    <string name="simpan">Simpan</string>
 </resources>

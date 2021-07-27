@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
             rvProfile.setOnClickListener {
                 startActivity(Intent(baseContext, ProfileActivity::class.java))
             }
+            rvPass.setOnClickListener {
+                startActivity(Intent(baseContext, PasswordActivity::class.java))
+            }
         }
     }
 
@@ -55,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                 response: Response<ProfileResponse>
             ) {
                 val profileResponse = response.body()?.data
-                Log.d("Response", profileResponse.toString())
+                // Log.d("Response", profileResponse.toString())
                 binding.apply {
                     tvName.text = profileResponse?.name
                     tvEmail.text = profileResponse?.email
