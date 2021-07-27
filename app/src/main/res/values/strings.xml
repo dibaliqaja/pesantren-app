@@ -46,4 +46,7 @@
     <string name="password_baru">Password Baru</string>
     <string name="password_lama">Password Lama</string>
     <string name="simpan">Simpan</string>
+    <string name="camera_icon">Camera Icon</string>
+    <string name="no_hp_santri">No. HP Santri</string>
+    <string name="logout">Logout</string>
 </resources>

@@ -44,8 +44,12 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnLogout.setOnClickListener {
-            logout()
+        binding.apply {
+            btnEditProfil.setOnClickListener {
+                startActivity(Intent(baseContext, EditProfileActivity::class.java))
+            }
+
+            btnLogout.setOnClickListener { logout() }
         }
     }
 

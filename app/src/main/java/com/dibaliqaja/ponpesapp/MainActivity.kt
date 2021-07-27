@@ -3,7 +3,6 @@ package com.dibaliqaja.ponpesapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
@@ -72,8 +71,8 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
                 Log.e("Failure: ", t.message.toString())
+                preferencesHelper.clear()
             }
-
         })
     }
 }

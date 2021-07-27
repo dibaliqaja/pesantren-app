@@ -411,7 +411,7 @@
                 android:id="@+id/btn_logout"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:text="Logout"
+                android:text="@string/logout"
                 android:textColor="@color/red_2"
                 android:textSize="16sp"
                 android:textStyle="bold"

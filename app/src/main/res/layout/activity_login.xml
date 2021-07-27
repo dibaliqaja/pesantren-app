@@ -6,51 +6,58 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="24dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:orientation="vertical"
         android:focusableInTouchMode="true">
 
-        <ImageView
-            android:id="@+id/iv_logo"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="64dp"
-            android:contentDescription="@string/pesantren_logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_logo" />
-
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/relative_logo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:gravity="center"
-            android:text="@string/pondok_pesantren_ash_shomadiyah_komplek_tengah"
-            android:textAlignment="center"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/black_1"
-            app:layout_constraintEnd_toEndOf="@id/iv_logo"
-            app:layout_constraintStart_toStartOf="@id/iv_logo"
-            app:layout_constraintTop_toBottomOf="@id/iv_logo" />
+            android:layout_marginTop="64dp">
+
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:contentDescription="@string/pesantren_logo"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_logo" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/pondok_pesantren_ash_shomadiyah_komplek_tengah"
+                android:textAlignment="center"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black_1" />
+
+        </RelativeLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:endIconMode="clear_text"
-            app:layout_constraintEnd_toEndOf="@id/tv_name"
-            app:layout_constraintStart_toStartOf="@id/tv_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_name">
+            app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_email"
@@ -69,13 +76,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="24dp"
-            app:endIconMode="password_toggle"
-            app:layout_constraintEnd_toEndOf="@+id/til_email"
-            app:layout_constraintStart_toStartOf="@+id/til_email"
-            app:layout_constraintTop_toBottomOf="@id/til_email">
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_password"
@@ -95,13 +97,8 @@
             android:layout_height="70dp"
             android:text="@string/login"
             android:textSize="16sp"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/til_password"
-            app:layout_constraintEnd_toEndOf="@+id/til_password"
-            app:layout_constraintStart_toStartOf="@+id/til_password" />
+            android:layout_marginTop="24dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>
