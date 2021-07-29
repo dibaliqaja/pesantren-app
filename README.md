@@ -1,4 +1,3 @@
 # Pesantren App
 
-Repository for pesantren app only `santri`
-consume API from https://github.com/dibaliqaja/pondok-cms
+Repository Pesantren App,<br/> this app consume API from Project -> https://github.com/dibaliqaja/pondok-cms

@@ -1,9 +1,11 @@
 package com.dibaliqaja.ponpesapp
 
+import android.Manifest
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
 import android.os.Build
@@ -14,6 +16,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import com.dibaliqaja.ponpesapp.databinding.ActivityEditProfileBinding
 import com.dibaliqaja.ponpesapp.helper.Constant
@@ -54,10 +57,11 @@ class EditProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
         preferencesHelper = PreferencesHelper(this)
 
-        getProfile()
+        preferencesHelper.getString(Constant.prefToken)?.let { getProfile(it) }
 
         binding.apply {
             fabPhoto.setOnClickListener {
+                requestPermission()
                 ImagePicker.with(this@EditProfileActivity)
                     .compress(1024)
                     .cropSquare()
@@ -105,8 +109,8 @@ class EditProfileActivity : AppCompatActivity() {
         binding.edtBirthDate.setText(dateAsFormattedText)
     }
 
-    private fun getProfile() {
-        RetrofitClient.apiService.getProfile("Bearer " + preferencesHelper.getString(Constant.prefToken)).enqueue(object :
+    private fun getProfile(token: String) {
+        RetrofitClient.apiService.getProfile("Bearer $token").enqueue(object :
             Callback<ProfileResponse> {
             override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
                 val listResponse = response.body()?.data
@@ -220,7 +224,7 @@ class EditProfileActivity : AppCompatActivity() {
             Callback<ProfileResponse> {
             override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
                 if (response.isSuccessful) {
-                    Log.e("Response", response.body()?.data.toString())
+                    Log.e("Response: ", response.body()?.data.toString())
                     if (progressDialog.isShowing) progressDialog.dismiss()
                     finish()
                     startActivity(Intent(baseContext, ProfileActivity::class.java))
@@ -344,5 +348,20 @@ class EditProfileActivity : AppCompatActivity() {
         }
         cursor?.close()
         return filePath
+    }
+
+    private fun hasPermission(): Boolean {
+        return ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestPermission() {
+        val permission = mutableListOf<String>()
+        if (!hasPermission()) {
+            permission.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            permission.add(Manifest.permission.CAMERA)
+        }
+        if (permission.isNotEmpty()) {
+            ActivityCompat.requestPermissions(this, permission.toTypedArray(), 0)
+        }
     }
 }
