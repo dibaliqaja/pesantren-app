@@ -27,23 +27,3 @@ data class Profile(
     @SerializedName("year_out") val yearOut : Int?,
     @SerializedName("photo") val photo : String?,
 )
-
-data class ProfileRequest(
-    var name: String,
-    var address: String,
-    var birthPlace: String,
-    var birthDate: String,
-    var phone: String,
-    var schoolOld: String,
-    var schoolAddressOld: String,
-    var schoolCurrent: String,
-    var schoolAddressCurrent: String,
-    var fatherName: String,
-    var motherName: String,
-    var fatherJob: String,
-    var motherJob: String,
-    var parentPhone: String,
-    var entryYear: Int,
-    var yearOut: Int?,
-    var photo: String?
-)

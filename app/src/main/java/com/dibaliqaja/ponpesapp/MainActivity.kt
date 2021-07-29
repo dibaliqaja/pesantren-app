@@ -71,7 +71,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
                 Log.e("Failure: ", t.message.toString())
-                preferencesHelper.clear()
             }
         })
     }

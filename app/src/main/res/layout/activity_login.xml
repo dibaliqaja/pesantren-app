@@ -47,7 +47,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/black_1" />
+                android:textColor="?android:attr/textColorPrimary" />
 
         </RelativeLayout>
 

@@ -39,8 +39,6 @@ class LoginActivity : AppCompatActivity() {
         if (preferencesHelper.getBoolean(Constant.prefIsLogin)) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        } else if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
-            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 
