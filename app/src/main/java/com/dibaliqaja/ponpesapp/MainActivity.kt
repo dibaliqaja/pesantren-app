@@ -47,6 +47,9 @@ class MainActivity : AppCompatActivity() {
             rvPass.setOnClickListener {
                 startActivity(Intent(baseContext, PasswordActivity::class.java))
             }
+            rvBukuKas.setOnClickListener {
+                startActivity(Intent(baseContext, CashBookActivity::class.java))
+            }
         }
     }
 

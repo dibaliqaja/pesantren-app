@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp">
+
+    <ImageView
+        android:id="@+id/iv_cash"
+        android:layout_width="60dp"
+        android:layout_height="65dp"
+        android:paddingTop="18dp"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:paddingBottom="13dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/ic_round_white"
+        android:backgroundTint="#E6E6E6"
+        android:src="@drawable/ic_cash_out"
+        android:contentDescription="@string/cash_image" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/iv_cash"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_item_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:textColor="@color/black_1"
+            android:ellipsize="end"
+            tools:text="Pembayaran syahriah aaaa syahriah s11"/>
+
+        <TextView
+            android:id="@+id/tv_item_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/black_1"
+            tools:text="10 Jul 2021"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/linearLayout1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_item_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black_1"
+            android:ellipsize="end"
+            android:text="Rp. 00.000.000" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -50,4 +50,5 @@
     <string name="no_hp_santri">No. HP Santri</string>
     <string name="logout">Logout</string>
     <string name="camera_button">Camera button</string>
+    <string name="cash_image">Cash Image</string>
 </resources>

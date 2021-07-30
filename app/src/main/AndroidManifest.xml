@@ -12,22 +12,22 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_new_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PonpesApp"
-        android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity
-            android:name=".EditProfileActivity"
+        <activity android:name=".CashBookActivity"
+            android:label="Buku Kas"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".EditProfileActivity"
             android:label="Edit Profil Santri"
-            android:parentActivityName=".ProfileActivity"/>
-        <activity
-            android:name=".PasswordActivity"
+            android:parentActivityName=".ProfileActivity" />
+        <activity android:name=".PasswordActivity"
             android:label="Ubah Password"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".ProfileActivity"
+        <activity android:name=".ProfileActivity"
             android:label="Profil Santri"
             android:parentActivityName=".MainActivity" />
         <activity

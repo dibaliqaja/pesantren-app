@@ -65,7 +65,7 @@ class ProfileActivity : AppCompatActivity() {
                 val address: String = profileResponse.address
                 val birthPlace: String = profileResponse.birthPlace
                 val birthDate: Date = profileResponse.birthDate
-                val newBirthDate = SimpleDateFormat("d MMM yyyy").format(birthDate)
+                val newBirthDate = SimpleDateFormat("d MMMM yyyy").format(birthDate)
                 val phone: String = profileResponse.phone
                 val schoolOld: String = profileResponse.schoolOld
                 val schoolAddressOld: String = profileResponse.schoolAddressOld
