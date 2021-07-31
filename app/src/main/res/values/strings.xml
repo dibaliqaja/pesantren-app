@@ -51,4 +51,7 @@
     <string name="logout">Logout</string>
     <string name="camera_button">Camera button</string>
     <string name="cash_image">Cash Image</string>
+    <string name="rp_0">Rp. 0</string>
+    <string name="saldo">Saldo:</string>
+    <string name="search">Search</string>
 </resources>

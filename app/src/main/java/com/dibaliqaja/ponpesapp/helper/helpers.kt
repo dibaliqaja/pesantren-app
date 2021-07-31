@@ -1,5 +1,7 @@
 package com.dibaliqaja.ponpesapp.helper
 
+import java.text.NumberFormat
+import java.util.*
 import java.util.regex.Pattern
 
 internal class FormattedDateMatcher : DateMatcher {
@@ -16,4 +18,10 @@ internal class FormattedDateMatcher : DateMatcher {
 
 interface DateMatcher {
     fun matches(date: String?): Boolean
+}
+
+fun rupiah(number: Double): String{
+    val localeID =  Locale("in", "ID")
+    val numberFormat = NumberFormat.getCurrencyInstance(localeID)
+    return numberFormat.format(number).toString()
 }

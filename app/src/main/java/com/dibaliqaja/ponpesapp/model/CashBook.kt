@@ -13,5 +13,6 @@ data class CashBook(
 data class CashBookResponse(
     @SerializedName("page") val page: Int,
     @SerializedName("total_page") val totalPage: Int,
+    @SerializedName("saldo") val saldo: String,
     @SerializedName("data") val data: ArrayList<CashBook>
 )

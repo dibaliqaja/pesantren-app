@@ -17,17 +17,68 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvCashBook"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp">
 
-                <ProgressBar
-                    android:id="@+id/progressBar"
+                <TextView
+                    android:id="@+id/tv_saldo"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/saldo"
+                    android:textSize="18sp"
+                    android:textColor="@color/black_1" />
+
+                <TextView
+                    android:id="@+id/tv_saldo_price"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="16dp" />
+                    android:text="@string/rp_0"
+                    android:maxLines="1"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black_1"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/tv_saldo"  />
+
+            </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:endIconDrawable="@drawable/ic_baseline_search_24"
+                app:endIconTint="@color/black_1"
+                app:endIconMode="custom">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/search"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:backgroundTint="@color/white"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCashBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                tools:listitem="@layout/item_cash_book" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="5dp"
+                android:paddingBottom="16dp" />
 
         </LinearLayout>
 

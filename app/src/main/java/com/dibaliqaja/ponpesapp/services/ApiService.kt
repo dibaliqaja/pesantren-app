@@ -10,8 +10,8 @@ interface ApiService {
     @POST("login")
     fun login(@Body login: LoginRequest): Call<LoginResponse>
 
-    @POST("refresh")
-    fun refresh(@Header("Authorization") authorization: String): Call<LoginResponse>
+    // @POST("refresh")
+    // fun refresh(@Header("Authorization") authorization: String): Call<LoginResponse>
 
     @GET("profile")
     fun getProfile(@Header("Authorization") authorization: String): Call<ProfileResponse>
@@ -57,6 +57,7 @@ interface ApiService {
     @GET("buku-kas")
     fun getSearchCashBook(
         @Header("Authorization") authorization: String,
-        @Query("search") search: String
+        @QueryMap parameters: HashMap<String, String>,
+        @Query("search") search: String?
     ): Call<CashBookResponse>
 }

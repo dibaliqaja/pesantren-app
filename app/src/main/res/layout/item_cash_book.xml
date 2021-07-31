@@ -10,16 +10,12 @@
     <ImageView
         android:id="@+id/iv_cash"
         android:layout_width="60dp"
-        android:layout_height="65dp"
-        android:paddingTop="18dp"
-        android:paddingStart="18dp"
-        android:paddingEnd="18dp"
-        android:paddingBottom="13dp"
-        android:layout_marginEnd="12dp"
-        android:background="@drawable/ic_round_white"
-        android:backgroundTint="#E6E6E6"
-        android:src="@drawable/ic_cash_out"
-        android:contentDescription="@string/cash_image" />
+        android:layout_height="60dp"
+        android:padding="15dp"
+        android:background="@drawable/ic_round_white_border"
+        android:src="@drawable/ic_cash_in"
+        android:contentDescription="@string/cash_image"
+        android:layout_margin="3dp"/>
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -27,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/iv_cash"
+        android:layout_marginStart="7dp"
         android:orientation="vertical">
 
         <TextView
@@ -34,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:maxLines="2"
             android:textColor="@color/black_1"
@@ -46,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:textStyle="italic"
             android:maxLines="1"
             android:textColor="@color/black_1"
             tools:text="10 Jul 2021"/>
@@ -64,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:maxLines="1"
             android:textAlignment="textEnd"
