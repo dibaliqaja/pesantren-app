@@ -1,5 +1,6 @@
 package com.dibaliqaja.ponpesapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -66,6 +67,14 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
                 }
             }
         })
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
     }
 
     private fun getCashBook(isOnRefresh: Boolean) {

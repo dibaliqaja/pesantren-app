@@ -1,7 +1,10 @@
 package com.dibaliqaja.ponpesapp
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,6 +31,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         preferencesHelper = PreferencesHelper(this)
+
+        checkConnectivity()
 
         binding.btnLogin.setOnClickListener {
             if (checkFields()) login()
@@ -83,8 +88,7 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 if (progressDialog.isShowing) progressDialog.dismiss()
-                Toast.makeText(baseContext, "Login failed", Toast.LENGTH_SHORT).show()
-                Log.e("Failure: ", t.message.toString())
+                Toast.makeText(baseContext, t.message.toString(), Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -104,5 +108,16 @@ class LoginActivity : AppCompatActivity() {
             binding.tilPassword.error = null
         }
         return true
+    }
+
+    fun checkConnectivity() {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = cm.activeNetworkInfo
+        val isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting
+        if (!isConnected) {
+            AlertDialog.Builder(this).setTitle("No Internet Connection")
+                .setMessage("Please check your internet connection and try again")
+                .setPositiveButton(android.R.string.ok) { _, _ -> }.show()
+        }
     }
 }

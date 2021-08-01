@@ -53,6 +53,14 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+    }
+
     private fun getProfile(token: String) {
         RetrofitClient.apiService.getProfile("Bearer $token").enqueue(object:
             Callback<ProfileResponse> {

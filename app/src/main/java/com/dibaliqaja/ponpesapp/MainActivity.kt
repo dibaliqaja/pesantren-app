@@ -1,5 +1,6 @@
 package com.dibaliqaja.ponpesapp
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -53,22 +54,33 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+    }
+
     private fun getProfile(token: String) {
         apiService.getProfile("Bearer $token").enqueue(object: Callback<ProfileResponse> {
             override fun onResponse(
                 call: Call<ProfileResponse>,
                 response: Response<ProfileResponse>
             ) {
-                val profileResponse = response.body()?.data
-                // Log.d("Response", profileResponse.toString())
-                binding.apply {
-                    tvName.text = profileResponse?.name
-                    tvEmail.text = profileResponse?.email
-                    Glide.with(this@MainActivity)
-                        .load(profileResponse?.photo)
-                        .placeholder(R.drawable.profile_placeholder)
-                        .centerCrop()
-                        .into(ivPhoto)
+                if (response.isSuccessful) {
+                    val profileResponse = response.body()?.data
+                    binding.apply {
+                        tvName.text = profileResponse?.name
+                        tvEmail.text = profileResponse?.email
+                        Glide.with(this@MainActivity)
+                            .load(profileResponse?.photo)
+                            .placeholder(R.drawable.profile_placeholder)
+                            .centerCrop()
+                            .into(ivPhoto)
+                    }
+                } else {
+                    Log.e("res", response.message())
                 }
             }
 

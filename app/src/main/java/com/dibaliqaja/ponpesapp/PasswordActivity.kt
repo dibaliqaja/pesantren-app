@@ -33,6 +33,14 @@ class PasswordActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+    }
+
     private fun update(token: String) {
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("Loading...")
