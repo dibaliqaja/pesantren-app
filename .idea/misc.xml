@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" />
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/drawable/ic_payment.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/layout/activity_cash_book.xml" value="0.1638888888888889" />
+        <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.1671875" />
+        <entry key="app/src/main/res/layout/activity_syahriah.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.1671875" />
+        <entry key="app/src/main/res/layout/fragment_riwayat.xml" value="0.1671875" />
+        <entry key="app/src/main/res/layout/fragment_spp.xml" value="0.1671875" />
+        <entry key="app/src/main/res/layout/item_cash_book.xml" value="0.1671875" />
+        <entry key="app/src/main/res/layout/item_syahriah_riwayat.xml" value="0.22" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1638888888888889" />
+      </map>
+    </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

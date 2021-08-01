@@ -1,5 +1,6 @@
-package com.dibaliqaja.ponpesapp
+package com.dibaliqaja.ponpesapp.ui.profile
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
+import com.dibaliqaja.ponpesapp.LoginActivity
+import com.dibaliqaja.ponpesapp.R
 import com.dibaliqaja.ponpesapp.databinding.ActivityProfileBinding
 import com.dibaliqaja.ponpesapp.helper.Constant
 import com.dibaliqaja.ponpesapp.helper.PreferencesHelper
@@ -40,6 +43,7 @@ class ProfileActivity : AppCompatActivity() {
                 swipeRefreshLayout.isRefreshing = false
             } catch (e: Exception) {
                 swipeRefreshLayout.isRefreshing = false
+                preferencesHelper.clear()
                 Log.e("Failure: ", e.message.toString())
             }
         }
@@ -48,7 +52,6 @@ class ProfileActivity : AppCompatActivity() {
             btnEditProfil.setOnClickListener {
                 startActivity(Intent(baseContext, EditProfileActivity::class.java))
             }
-
             btnLogout.setOnClickListener { logout() }
         }
     }
@@ -64,6 +67,7 @@ class ProfileActivity : AppCompatActivity() {
     private fun getProfile(token: String) {
         RetrofitClient.apiService.getProfile("Bearer $token").enqueue(object:
             Callback<ProfileResponse> {
+            @SuppressLint("SimpleDateFormat")
             override fun onResponse(
                 call: Call<ProfileResponse>,
                 response: Response<ProfileResponse>
@@ -73,7 +77,7 @@ class ProfileActivity : AppCompatActivity() {
                 val address: String = profileResponse.address
                 val birthPlace: String = profileResponse.birthPlace
                 val birthDate: Date = profileResponse.birthDate
-                val newBirthDate = SimpleDateFormat("d MMMM yyyy").format(birthDate)
+                val newBirthDate = SimpleDateFormat("d MMMM yyyy", Locale("id")).format(birthDate)
                 val phone: String = profileResponse.phone
                 val schoolOld: String = profileResponse.schoolOld
                 val schoolAddressOld: String = profileResponse.schoolAddressOld
@@ -119,6 +123,7 @@ class ProfileActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+                preferencesHelper.clear()
                 Log.e("Failure: ", t.message.toString())
             }
 

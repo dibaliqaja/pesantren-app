@@ -1,17 +1,15 @@
-package com.dibaliqaja.ponpesapp
+package com.dibaliqaja.ponpesapp.ui.cashbook
 
 import android.annotation.SuppressLint
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.dibaliqaja.ponpesapp.R
 import com.dibaliqaja.ponpesapp.databinding.ItemCashBookBinding
 import com.dibaliqaja.ponpesapp.helper.rupiah
 import com.dibaliqaja.ponpesapp.model.CashBook
-import java.security.AccessController.getContext
-import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -25,11 +23,13 @@ class CashBookAdapter(private val list: ArrayList<CashBook>): RecyclerView.Adapt
 
     override fun getItemCount(): Int = list.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addList(items: ArrayList<CashBook>) {
         list.addAll(items)
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun clear() {
         list.clear()
         notifyDataSetChanged()
@@ -44,7 +44,7 @@ class CashBookAdapter(private val list: ArrayList<CashBook>): RecyclerView.Adapt
             with(list[position]) {
                 binding.apply {
                     tvItemNote.text = note
-                    tvItemDate.text = SimpleDateFormat("d MMMM yyyy").format(date)
+                    tvItemDate.text = SimpleDateFormat("d MMMM yyyy", Locale("id")).format(date)
                     if (debit == 0.00) {
                         ivCash.setImageResource(R.drawable.ic_cash_out)
                         ivCash.setColorFilter(holder.itemView.context.getColor(R.color.red_2))

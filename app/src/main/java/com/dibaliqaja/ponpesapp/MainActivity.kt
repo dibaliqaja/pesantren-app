@@ -1,6 +1,5 @@
 package com.dibaliqaja.ponpesapp
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +11,8 @@ import com.dibaliqaja.ponpesapp.helper.Constant
 import com.dibaliqaja.ponpesapp.helper.PreferencesHelper
 import com.dibaliqaja.ponpesapp.model.ProfileResponse
 import com.dibaliqaja.ponpesapp.services.RetrofitClient.apiService
+import com.dibaliqaja.ponpesapp.ui.cashbook.CashBookActivity
+import com.dibaliqaja.ponpesapp.ui.profile.ProfileActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
                 swipeRefreshLayout.isRefreshing = false
             } catch (e: Exception) {
                 swipeRefreshLayout.isRefreshing = false
+                preferencesHelper.clear()
                 Log.e("Failure: ", e.message.toString())
             }
         }
@@ -50,6 +52,9 @@ class MainActivity : AppCompatActivity() {
             }
             rvBukuKas.setOnClickListener {
                 startActivity(Intent(baseContext, CashBookActivity::class.java))
+            }
+            rvSyahriah.setOnClickListener {
+                startActivity(Intent(baseContext, SyahriahActivity::class.java))
             }
         }
     }
@@ -79,12 +84,11 @@ class MainActivity : AppCompatActivity() {
                             .centerCrop()
                             .into(ivPhoto)
                     }
-                } else {
-                    Log.e("res", response.message())
                 }
             }
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
+                preferencesHelper.clear()
                 Log.e("Failure: ", t.message.toString())
             }
         })

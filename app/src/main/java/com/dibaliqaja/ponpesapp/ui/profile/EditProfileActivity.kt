@@ -1,4 +1,4 @@
-package com.dibaliqaja.ponpesapp
+package com.dibaliqaja.ponpesapp.ui.profile
 
 import android.Manifest
 import android.app.Activity
@@ -18,6 +18,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
+import com.dibaliqaja.ponpesapp.LoginActivity
+import com.dibaliqaja.ponpesapp.R
 import com.dibaliqaja.ponpesapp.databinding.ActivityEditProfileBinding
 import com.dibaliqaja.ponpesapp.helper.Constant
 import com.dibaliqaja.ponpesapp.helper.FormattedDateMatcher
@@ -42,7 +44,6 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-
 class EditProfileActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditProfileBinding
@@ -64,7 +65,6 @@ class EditProfileActivity : AppCompatActivity() {
                 requestPermission()
                 ImagePicker.with(this@EditProfileActivity)
                     .compress(1024)
-                    .cropSquare()
                     .galleryMimeTypes(arrayOf("image/png", "image/jpeg", "image/jpg"))
                     .start()
             }
@@ -172,7 +172,8 @@ class EditProfileActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
-                Log.d("Failure ", t.message.toString())
+                preferencesHelper.clear()
+                Log.d("Failure: ", t.message.toString())
             }
         })
     }
@@ -232,7 +233,7 @@ class EditProfileActivity : AppCompatActivity() {
             Callback<ProfileResponse> {
             override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
                 if (response.isSuccessful) {
-                    Log.e("Response: ", response.body()?.data.toString())
+//                    Log.e("Response: ", response.body()?.data.toString())
                     if (progressDialog.isShowing) progressDialog.dismiss()
                     finish()
                     startActivity(Intent(baseContext, ProfileActivity::class.java))
@@ -241,10 +242,10 @@ class EditProfileActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
-                t.printStackTrace()
-                Log.e("Failure", t.message.toString())
                 if (progressDialog.isShowing) progressDialog.dismiss()
                 Toast.makeText(baseContext, "Failed", Toast.LENGTH_SHORT).show()
+                preferencesHelper.clear()
+                Log.e("Failure: ", t.message.toString())
             }
 
         })

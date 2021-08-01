@@ -1,4 +1,4 @@
-package com.dibaliqaja.ponpesapp
+package com.dibaliqaja.ponpesapp.ui.cashbook
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.dibaliqaja.ponpesapp.LoginActivity
 import com.dibaliqaja.ponpesapp.databinding.ActivityCashBookBinding
 import com.dibaliqaja.ponpesapp.helper.Constant
 import com.dibaliqaja.ponpesapp.helper.PreferencesHelper
@@ -105,7 +106,7 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
                 binding.progressBar.visibility = View.GONE
                 binding.swipeRefresh.isRefreshing = false
                 Toast.makeText(baseContext, "Failed load data", Toast.LENGTH_SHORT).show()
-                t.printStackTrace()
+                preferencesHelper.clear()
                 Log.d("Failure: ", t.message.toString())
             }
 
@@ -141,7 +142,7 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
                 binding.progressBar.visibility = View.GONE
                 binding.swipeRefresh.isRefreshing = false
                 Toast.makeText(baseContext, "Failed load data", Toast.LENGTH_SHORT).show()
-                t.printStackTrace()
+                preferencesHelper.clear()
                 Log.d("Failure: ", t.message.toString())
             }
 

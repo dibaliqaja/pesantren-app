@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp">
+
+    <ImageView
+        android:id="@+id/iv_cash"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="15dp"
+        android:background="@drawable/ic_round_white_border"
+        android:src="@drawable/ic_payment"
+        android:contentDescription="@string/cash_image"
+        android:layout_margin="3dp"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/iv_cash"
+        android:layout_marginStart="7dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_item_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:textColor="@color/black_1"
+            android:ellipsize="end"
+            tools:text="Jan 2021"/>
+
+        <TextView
+            android:id="@+id/tv_item_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textStyle="italic"
+            android:maxLines="1"
+            android:textColor="@color/black_1"
+            tools:text="10 January 2021"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/linearLayout1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_item_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black_1"
+            android:ellipsize="end"
+            android:text="Rp. 00.000.000" />
+
+    </LinearLayout>
+
+</RelativeLayout>

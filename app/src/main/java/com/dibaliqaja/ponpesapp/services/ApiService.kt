@@ -60,4 +60,17 @@ interface ApiService {
         @QueryMap parameters: HashMap<String, String>,
         @Query("search") search: String?
     ): Call<CashBookResponse>
+
+    @GET("syahriah-history")
+    fun getSyahriahHistory(
+        @Header("Authorization") authorization: String,
+        @QueryMap parameters: HashMap<String, String>
+    ): Call<SyahriahHistoryResponse>
+
+    @GET("syahriah-history")
+    fun getSearchSyahriahHistory(
+        @Header("Authorization") authorization: String,
+        @QueryMap parameters: HashMap<String, String>,
+        @Query("search") search: String?
+    ): Call<SyahriahHistoryResponse>
 }

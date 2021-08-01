@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_spp"
+        android:icon="@drawable/ic_baseline_payment_24"
+        android:title="@string/title_spp" />
+
+    <item
+        android:id="@+id/navigation_riwayat"
+        android:icon="@drawable/ic_baseline_history_24"
+        android:title="@string/title_riwayat" />
+
+</menu>

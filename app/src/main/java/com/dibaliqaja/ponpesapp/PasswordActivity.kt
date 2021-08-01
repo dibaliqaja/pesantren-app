@@ -55,7 +55,7 @@ class PasswordActivity : AppCompatActivity() {
                 if (progressDialog.isShowing) progressDialog.dismiss()
                 if (response.isSuccessful) {
                     val passwordResponse = response.body()?.data
-                    Log.e("Response: ", passwordResponse.toString())
+//                    Log.e("Response: ", passwordResponse.toString())
 
                     Toast.makeText(baseContext, "Update password berhasil", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(baseContext, MainActivity::class.java))
@@ -84,6 +84,7 @@ class PasswordActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<PasswordResponse>, t: Throwable) {
                 if (progressDialog.isShowing) progressDialog.dismiss()
+                preferencesHelper.clear()
                 Log.e("Failure: ", t.toString())
             }
 

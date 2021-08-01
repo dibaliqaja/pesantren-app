@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -18,16 +20,24 @@
         android:theme="@style/Theme.PonpesApp"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".CashBookActivity"
+        <activity
+            android:name=".SyahriahActivity"
+            android:label="@string/title_activity_syahriah"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ui.cashbook.CashBookActivity"
             android:label="Buku Kas"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".EditProfileActivity"
+        <activity
+            android:name=".ui.profile.EditProfileActivity"
             android:label="Edit Profil Santri"
-            android:parentActivityName=".ProfileActivity" />
-        <activity android:name=".PasswordActivity"
+            android:parentActivityName=".ui.profile.ProfileActivity" />
+        <activity
+            android:name=".PasswordActivity"
             android:label="Ubah Password"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".ProfileActivity"
+        <activity
+            android:name=".ui.profile.ProfileActivity"
             android:label="Profil Santri"
             android:parentActivityName=".MainActivity" />
         <activity

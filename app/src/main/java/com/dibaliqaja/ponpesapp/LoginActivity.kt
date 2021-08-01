@@ -89,6 +89,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 if (progressDialog.isShowing) progressDialog.dismiss()
                 Toast.makeText(baseContext, t.message.toString(), Toast.LENGTH_SHORT).show()
+//                Log.e("Failure: ", t.message.toString())
             }
 
         })
@@ -110,7 +111,7 @@ class LoginActivity : AppCompatActivity() {
         return true
     }
 
-    fun checkConnectivity() {
+    private fun checkConnectivity() {
         val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = cm.activeNetworkInfo
         val isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting
