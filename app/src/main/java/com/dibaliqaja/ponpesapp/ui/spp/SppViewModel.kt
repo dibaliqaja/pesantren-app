@@ -57,44 +57,44 @@ class SppViewModel : ViewModel() {
         return listSPP
     }
 
-//    fun setSearchYear(token: String, rSearch: Int) {
-//        RetrofitClient.apiService.getSearchSyahriahSpp(token, rSearch).enqueue(object :
-//            Callback<SyahriahSppResponse> {
-//            override fun onResponse(call: Call<SyahriahSppResponse>, response: Response<SyahriahSppResponse>) {
-//                if (response.isSuccessful) {
-//                    year.postValue(response.body()?.year)
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<SyahriahSppResponse>, t: Throwable) {
-//                t.printStackTrace()
-//                Log.e("Failure: ", t.message.toString())
-//            }
-//
-//        })
-//    }
-//
-//    fun getSearchYear(): LiveData<Int> {
-//        return year
-//    }
+    fun setSearchYear(token: String, rSearch: Int) {
+        RetrofitClient.apiService.getSearchSyahriahSpp(token, rSearch).enqueue(object :
+            Callback<SyahriahSppResponse> {
+            override fun onResponse(call: Call<SyahriahSppResponse>, response: Response<SyahriahSppResponse>) {
+                if (response.isSuccessful) {
+                    year.postValue(response.body()?.year)
+                }
+            }
 
-//    fun setSearchSPP(token: String, rSearch: Int) {
-//        RetrofitClient.apiService.getSearchSyahriahSpp(token, rSearch).enqueue(object : Callback<SyahriahSppResponse>{
-//            override fun onResponse(call: Call<SyahriahSppResponse>, response: Response<SyahriahSppResponse>) {
-//                if (response.isSuccessful) {
-//                    listSPP.postValue(response.body()?.data)
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<SyahriahSppResponse>, t: Throwable) {
-//                t.printStackTrace()
-//                Log.e("Failure: ", t.message.toString())
-//            }
-//
-//        })
-//    }
-//
-//    fun getSearchSPP(): LiveData<List<SPP>> {
-//        return listSPP
-//    }
+            override fun onFailure(call: Call<SyahriahSppResponse>, t: Throwable) {
+                t.printStackTrace()
+                Log.e("Failure: ", t.message.toString())
+            }
+
+        })
+    }
+
+    fun getSearchYear(): LiveData<Int> {
+        return year
+    }
+
+    fun setSearchSPP(token: String, rSearch: Int) {
+        RetrofitClient.apiService.getSearchSyahriahSpp(token, rSearch).enqueue(object : Callback<SyahriahSppResponse>{
+            override fun onResponse(call: Call<SyahriahSppResponse>, response: Response<SyahriahSppResponse>) {
+                if (response.isSuccessful) {
+                    listSPP.postValue(response.body()?.data)
+                }
+            }
+
+            override fun onFailure(call: Call<SyahriahSppResponse>, t: Throwable) {
+                t.printStackTrace()
+                Log.e("Failure: ", t.message.toString())
+            }
+
+        })
+    }
+
+    fun getSearchSPP(): LiveData<HashMap<String, Syahriah>> {
+        return listSPP
+    }
 }

@@ -2,25 +2,16 @@ package com.dibaliqaja.ponpesapp.ui.spp
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.dibaliqaja.ponpesapp.databinding.FragmentSppBinding
 import com.dibaliqaja.ponpesapp.helper.Constant
 import com.dibaliqaja.ponpesapp.helper.PreferencesHelper
 import com.dibaliqaja.ponpesapp.helper.formatDate
 import com.dibaliqaja.ponpesapp.helper.rupiah
-import com.dibaliqaja.ponpesapp.model.Syahriah
-import org.json.JSONObject
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
 
 class SppFragment : Fragment() {
 
@@ -35,7 +26,7 @@ class SppFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         sppViewModel =
             ViewModelProvider(this).get(SppViewModel::class.java)
 
@@ -44,27 +35,129 @@ class SppFragment : Fragment() {
 
         val preferencesHelper = PreferencesHelper(requireContext())
 
-//        binding.tilSearchYear.setEndIconOnClickListener {
-//            val rSearch = binding.edtSearchYear.text.toString().trim()
-//            if (!TextUtils.isEmpty(rSearch)) {
-//                sppViewModel.setSearchYear("Bearer " + preferencesHelper.getString(Constant.prefToken), rSearch.toInt())
-//                sppViewModel.getSearchYear().observe(viewLifecycleOwner, {
-//                    binding.tvYear.text = it.toString()
-//                })
-//            }
-//            else {
-//                sppViewModel.setYear("Bearer " + preferencesHelper.getString(Constant.prefToken))
-//                sppViewModel.getYear().observe(viewLifecycleOwner, {
-//                    binding.tvYear.text = it.toString()
-//                })
-//            }
-//        }
+        binding.tilSearchYear.setEndIconOnClickListener {
+            val rSearch = binding.edtSearchYear.text.toString().trim()
+            if (!TextUtils.isEmpty(rSearch)) {
+                preferencesHelper.getString(Constant.prefToken)?.let {
+                    getSearchYear(it, rSearch.toInt())
+                    getSearchSPP(it, rSearch.toInt())
+                }
+            }
+        }
 
-        sppViewModel.setYear("Bearer " + preferencesHelper.getString(Constant.prefToken))
-        sppViewModel.getYear().observe(viewLifecycleOwner, {
-            binding.tvYear.text = it.toString()
+        preferencesHelper.getString(Constant.prefToken)?.let {
+            getYear(it)
+            getSPP(it)
+        }
+        return root
+    }
+
+    private fun getSearchYear(token: String, rSearch: Int) {
+        sppViewModel.setSearchYear("Bearer $token", rSearch)
+        sppViewModel.getSearchYear().observe(viewLifecycleOwner, { binding.tvYear.text = it.toString() })
+    }
+
+    private fun getSearchSPP(token: String, rSearch: Int) {
+        sppViewModel.setSearchSPP("Bearer $token", rSearch)
+        sppViewModel.getSearchSPP().observe(viewLifecycleOwner, {
+            if (it != null) {
+                binding.apply {
+                    if (it["jan"] != null) {
+                        tvDateJan.text = formatDate(it["jan"]!!.date)
+                        tvCashJan.text = rupiah(it["jan"]!!.spp)
+                    } else {
+                        tvDateJan.text = "-"
+                        tvCashJan.text = "-"
+                    }
+                    if (it["feb"] != null) {
+                        tvDateFeb.text = formatDate(it["feb"]!!.date)
+                        tvCashFeb.text = rupiah(it["feb"]!!.spp)
+                    } else {
+                        tvDateFeb.text = "-"
+                        tvCashFeb.text = "-"
+                    }
+                    if (it["mar"] != null) {
+                        tvDateMar.text = formatDate(it["mar"]!!.date)
+                        tvCashMar.text = rupiah(it["mar"]!!.spp)
+                    } else {
+                        tvDateMar.text = "-"
+                        tvCashMar.text = "-"
+                    }
+                    if (it["apr"] != null) {
+                        tvDateApr.text = formatDate(it["apr"]!!.date)
+                        tvCashApr.text = rupiah(it["apr"]!!.spp)
+                    } else {
+                        tvDateApr.text = "-"
+                        tvCashApr.text = "-"
+                    }
+                    if (it["may"] != null) {
+                        tvDateMay.text = formatDate(it["may"]!!.date)
+                        tvCashMay.text = rupiah(it["may"]!!.spp)
+                    } else {
+                        tvDateMay.text = "-"
+                        tvCashMay.text = "-"
+                    }
+                    if (it["jun"] != null) {
+                        tvDateJun.text = formatDate(it["jun"]!!.date)
+                        tvCashJun.text = rupiah(it["jun"]!!.spp)
+                    } else {
+                        tvDateJun.text = "-"
+                        tvCashJun.text = "-"
+                    }
+                    if (it["jul"] != null) {
+                        tvDateJul.text = formatDate(it["jul"]!!.date)
+                        tvCashJul.text = rupiah(it["jul"]!!.spp)
+                    } else {
+                        tvDateJul.text = "-"
+                        tvCashJul.text = "-"
+                    }
+                    if (it["aug"] != null) {
+                        tvDateAug.text = formatDate(it["aug"]!!.date)
+                        tvCashAug.text = rupiah(it["aug"]!!.spp)
+                    } else {
+                        tvDateAug.text = "-"
+                        tvCashAug.text = "-"
+                    }
+                    if (it["sep"] != null) {
+                        tvDateSep.text = formatDate(it["sep"]!!.date)
+                        tvCashSep.text = rupiah(it["sep"]!!.spp)
+                    } else {
+                        tvDateSep.text = "-"
+                        tvCashSep.text = "-"
+                    }
+                    if (it["oct"] != null) {
+                        tvDateOct.text = formatDate(it["oct"]!!.date)
+                        tvCashOct.text = rupiah(it["oct"]!!.spp)
+                    } else {
+                        tvDateOct.text = "-"
+                        tvCashOct.text = "-"
+                    }
+                    if (it["nov"] != null) {
+                        tvDateNov.text = formatDate(it["nov"]!!.date)
+                        tvCashNov.text = rupiah(it["nov"]!!.spp)
+                    } else {
+                        tvDateNov.text = "-"
+                        tvCashNov.text = "-"
+                    }
+                    if (it["dec"] != null) {
+                        tvDateDec.text = formatDate(it["dec"]!!.date)
+                        tvCashDec.text = rupiah(it["dec"]!!.spp)
+                    } else {
+                        tvDateDec.text = "-"
+                        tvCashDec.text = "-"
+                    }
+                }
+            }
         })
-        sppViewModel.setSPP("Bearer " + preferencesHelper.getString(Constant.prefToken))
+    }
+
+    private fun getYear(token: String) {
+        sppViewModel.setYear("Bearer $token")
+        sppViewModel.getYear().observe(viewLifecycleOwner, { binding.tvYear.text = it.toString() })
+    }
+
+    private fun getSPP(token: String) {
+        sppViewModel.setSPP("Bearer $token")
         sppViewModel.getSPP().observe(viewLifecycleOwner, {
             if (it != null) {
                 binding.apply {
@@ -119,7 +212,6 @@ class SppFragment : Fragment() {
                 }
             }
         })
-        return root
     }
 
     override fun onDestroyView() {

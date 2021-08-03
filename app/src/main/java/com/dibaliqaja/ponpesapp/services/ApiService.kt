@@ -69,11 +69,11 @@ interface ApiService {
         @Header("Authorization") authorization: String,
     ): Call<SyahriahSppResponse>
 
-//    @GET("syahriah-spp")
-//    fun getSearchSyahriahSpp(
-//        @Header("Authorization") authorization: String,
-//        @Query("search") search: Int?
-//    ): Call<SyahriahSppResponse>
+    @GET("syahriah-spp")
+    fun getSearchSyahriahSpp(
+        @Header("Authorization") authorization: String,
+        @Query("search") search: Int?
+    ): Call<SyahriahSppResponse>
 
     @GET("syahriah-history")
     fun getSyahriahHistory(

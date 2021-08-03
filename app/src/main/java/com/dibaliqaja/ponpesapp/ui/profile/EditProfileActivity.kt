@@ -1,6 +1,7 @@
 package com.dibaliqaja.ponpesapp.ui.profile
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
@@ -120,6 +121,7 @@ class EditProfileActivity : AppCompatActivity() {
     private fun getProfile(token: String) {
         RetrofitClient.apiService.getProfile("Bearer $token").enqueue(object :
             Callback<ProfileResponse> {
+            @SuppressLint("SimpleDateFormat")
             override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
                 val listResponse = response.body()?.data
                 val name: String = listResponse!!.name

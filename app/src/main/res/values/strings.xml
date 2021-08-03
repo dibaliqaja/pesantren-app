@@ -57,4 +57,20 @@
     <string name="title_activity_syahriah">MainActivity</string>
     <string name="title_spp">SPP</string>
     <string name="title_riwayat">Riwayat</string>
+    <string name="bulan">Bulan</string>
+    <string name="januari">Januari</string>
+    <string name="februari">Februari</string>
+    <string name="maret">Maret</string>
+    <string name="april">April</string>
+    <string name="mei">Mei</string>
+    <string name="juni">Juni</string>
+    <string name="juli">Juli</string>
+    <string name="agustus">Agustus</string>
+    <string name="september">September</string>
+    <string name="oktober">Oktober</string>
+    <string name="november">November</string>
+    <string name="desember">Desember</string>
+    <string name="tanggal_bayar">Tanggal Bayar</string>
+    <string name="biaya">Biaya</string>
+    <string name="cari_berdasarkan_tahun">Cari berdasarkan Tahun</string>
 </resources>
