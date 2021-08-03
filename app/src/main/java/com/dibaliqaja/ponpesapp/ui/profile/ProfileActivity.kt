@@ -14,6 +14,7 @@ import com.dibaliqaja.ponpesapp.R
 import com.dibaliqaja.ponpesapp.databinding.ActivityProfileBinding
 import com.dibaliqaja.ponpesapp.helper.Constant
 import com.dibaliqaja.ponpesapp.helper.PreferencesHelper
+import com.dibaliqaja.ponpesapp.helper.formatDate
 import com.dibaliqaja.ponpesapp.model.ProfileResponse
 import com.dibaliqaja.ponpesapp.services.RetrofitClient
 import retrofit2.Call
@@ -73,11 +74,12 @@ class ProfileActivity : AppCompatActivity() {
                 response: Response<ProfileResponse>
             ) {
                 val profileResponse = response.body()?.data
+                val email: String = profileResponse!!.email
                 val name: String = profileResponse!!.name
                 val address: String = profileResponse.address
                 val birthPlace: String = profileResponse.birthPlace
                 val birthDate: Date = profileResponse.birthDate
-                val newBirthDate = SimpleDateFormat("d MMMM yyyy", Locale("id")).format(birthDate)
+                val newBirthDate = formatDate(birthDate)
                 val phone: String = profileResponse.phone
                 val schoolOld: String = profileResponse.schoolOld
                 val schoolAddressOld: String = profileResponse.schoolAddressOld
@@ -93,6 +95,7 @@ class ProfileActivity : AppCompatActivity() {
                 val photo: String? = profileResponse.photo
 
                 binding.apply {
+                    tvEmail.text = email
                     tvName.text = name
                     tvAddress.text = address
                     tvBirthPlace.text = birthPlace

@@ -1,6 +1,7 @@
 package com.dibaliqaja.ponpesapp.helper
 
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 
@@ -24,4 +25,8 @@ fun rupiah(number: Double): String{
     val localeID =  Locale("in", "ID")
     val numberFormat = NumberFormat.getCurrencyInstance(localeID)
     return numberFormat.format(number).toString()
+}
+
+fun formatDate(date: Date): String {
+    return SimpleDateFormat("d MMMM yyyy", Locale("id")).format(date)
 }

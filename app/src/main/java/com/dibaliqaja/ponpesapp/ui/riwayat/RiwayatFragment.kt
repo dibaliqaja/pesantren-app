@@ -65,7 +65,7 @@ class RiwayatFragment : Fragment() {
                     if (visibleItemCount + pastVisibleItem >= total) {
                         page++
 
-                        if (!TextUtils.isEmpty(binding.edtSearch.toString())) {
+                        if (TextUtils.isEmpty(binding.edtSearch.toString())) {
                             preferencesHelper.getString(Constant.prefToken)?.let { getSyahriahHistory(it, false) }
                         } else {
                             preferencesHelper.getString(Constant.prefToken)?.let { getSearchSyahriahHistory(it, false) }

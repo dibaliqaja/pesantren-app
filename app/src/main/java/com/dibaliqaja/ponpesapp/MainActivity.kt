@@ -29,7 +29,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         preferencesHelper = PreferencesHelper(this)
 
-        preferencesHelper.getString(Constant.prefToken)?.let { getProfile(it) }
+        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        } else {
+            preferencesHelper.getString(Constant.prefToken)?.let { getProfile(it) }
+        }
 
         swipeRefreshLayout = binding.swipeRefresh
         swipeRefreshLayout.setOnRefreshListener {
@@ -56,14 +61,6 @@ class MainActivity : AppCompatActivity() {
             rvSyahriah.setOnClickListener {
                 startActivity(Intent(baseContext, SyahriahActivity::class.java))
             }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
         }
     }
 

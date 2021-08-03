@@ -13,6 +13,9 @@ interface ApiService {
     // @POST("refresh")
     // fun refresh(@Header("Authorization") authorization: String): Call<LoginResponse>
 
+    // @POST("logout")
+    // fun refresh(@Header("Authorization") authorization: String): Call<LoginResponse>
+
     @GET("profile")
     fun getProfile(@Header("Authorization") authorization: String): Call<ProfileResponse>
 
@@ -60,6 +63,17 @@ interface ApiService {
         @QueryMap parameters: HashMap<String, String>,
         @Query("search") search: String?
     ): Call<CashBookResponse>
+
+    @GET("syahriah-spp")
+    fun getSyahriahSpp(
+        @Header("Authorization") authorization: String,
+    ): Call<SyahriahSppResponse>
+
+//    @GET("syahriah-spp")
+//    fun getSearchSyahriahSpp(
+//        @Header("Authorization") authorization: String,
+//        @Query("search") search: Int?
+//    ): Call<SyahriahSppResponse>
 
     @GET("syahriah-history")
     fun getSyahriahHistory(

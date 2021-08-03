@@ -24,6 +24,11 @@ class SyahriahActivity : AppCompatActivity() {
         setContentView(binding.root)
         preferencesHelper = PreferencesHelper(this)
 
+        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_syahriah)
@@ -36,13 +41,5 @@ class SyahriahActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
     }
 }

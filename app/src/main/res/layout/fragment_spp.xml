@@ -1,22 +1,518 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.spp.SppFragment">
 
-    <TextView
-        android:id="@+id/text_home"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginBottom="24dp"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_search_year"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:endIconDrawable="@drawable/ic_baseline_search_24"
+                app:endIconMode="custom"
+                app:endIconTint="@color/black_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_search_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:hint="@string/search"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textSize="15sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Tahun -->
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="0000"
+                android:textAlignment="center"
+                android:textColor="@color/black_1"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/til_search_year"
+                app:layout_constraintStart_toStartOf="@id/til_search_year"
+                app:layout_constraintTop_toBottomOf="@id/til_search_year" />
+
+            <!-- Bulan -->
+            <TextView
+                android:id="@+id/tv_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Bulan"
+                android:textColor="@color/black_1"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tv_year"
+                app:layout_constraintTop_toBottomOf="@+id/tv_year" />
+
+            <TextView
+                android:id="@+id/tv_jan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Januari"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_month"
+                app:layout_constraintTop_toBottomOf="@+id/tv_month" />
+
+            <TextView
+                android:id="@+id/tv_feb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Februari"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_jan"
+                app:layout_constraintTop_toBottomOf="@+id/tv_jan" />
+
+            <TextView
+                android:id="@+id/tv_mar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Maret"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_feb"
+                app:layout_constraintTop_toBottomOf="@+id/tv_feb" />
+
+            <TextView
+                android:id="@+id/tv_apr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="April"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_mar"
+                app:layout_constraintTop_toBottomOf="@+id/tv_mar" />
+
+            <TextView
+                android:id="@+id/tv_may"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Mei"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_apr"
+                app:layout_constraintTop_toBottomOf="@+id/tv_apr" />
+
+            <TextView
+                android:id="@+id/tv_jun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Juni"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_may"
+                app:layout_constraintTop_toBottomOf="@+id/tv_may" />
+
+            <TextView
+                android:id="@+id/tv_jul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Juli"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_jun"
+                app:layout_constraintTop_toBottomOf="@+id/tv_jun" />
+
+            <TextView
+                android:id="@+id/tv_aug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Agustus"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_jul"
+                app:layout_constraintTop_toBottomOf="@+id/tv_jul" />
+
+            <TextView
+                android:id="@+id/tv_sep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="September"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_aug"
+                app:layout_constraintTop_toBottomOf="@+id/tv_aug" />
+
+            <TextView
+                android:id="@+id/tv_oct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Oktober"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_sep"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sep" />
+
+            <TextView
+                android:id="@+id/tv_nov"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="November"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_oct"
+                app:layout_constraintTop_toBottomOf="@+id/tv_oct" />
+
+            <TextView
+                android:id="@+id/tv_dec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Desember"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/tv_nov"
+                app:layout_constraintTop_toBottomOf="@+id/tv_nov" />
+            <!--  End Bulan  -->
+
+            <!--  Tanggal Bayar  -->
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Tanggal Bayar"
+                android:textColor="@color/black_1"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/tv_cash"
+                app:layout_constraintStart_toEndOf="@+id/tv_month"
+                app:layout_constraintTop_toBottomOf="@+id/tv_year" />
+
+            <TextView
+                android:id="@+id/tv_date_jan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="15 Desember 2021"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date"
+                app:layout_constraintStart_toStartOf="@id/tv_date"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+
+            <TextView
+                android:id="@+id/tv_date_feb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date_jan"
+                app:layout_constraintStart_toStartOf="@id/tv_date_jan"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_jan" />
+
+            <TextView
+                android:id="@+id/tv_date_mar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date_feb"
+                app:layout_constraintStart_toStartOf="@id/tv_date_feb"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_feb" />
+
+            <TextView
+                android:id="@+id/tv_date_apr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date_mar"
+                app:layout_constraintStart_toStartOf="@id/tv_date_mar"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_mar" />
+
+            <TextView
+                android:id="@+id/tv_date_may"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date_apr"
+                app:layout_constraintStart_toStartOf="@id/tv_date_apr"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_apr" />
+
+            <TextView
+                android:id="@+id/tv_date_jun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date_may"
+                app:layout_constraintStart_toStartOf="@id/tv_date_may"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_may" />
+
+            <TextView
+                android:id="@+id/tv_date_jul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date_jun"
+                app:layout_constraintStart_toStartOf="@id/tv_date_jun"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_jun" />
+
+            <TextView
+                android:id="@+id/tv_date_aug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date_jul"
+                app:layout_constraintStart_toStartOf="@id/tv_date_jul"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_jul" />
+
+            <TextView
+                android:id="@+id/tv_date_sep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date_aug"
+                app:layout_constraintStart_toStartOf="@id/tv_date_aug"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_aug" />
+
+            <TextView
+                android:id="@+id/tv_date_oct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date_sep"
+                app:layout_constraintStart_toStartOf="@id/tv_date_sep"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_sep" />
+
+            <TextView
+                android:id="@+id/tv_date_nov"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date_oct"
+                app:layout_constraintStart_toStartOf="@id/tv_date_oct"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_oct" />
+
+            <TextView
+                android:id="@+id/tv_date_dec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date_nov"
+                app:layout_constraintStart_toStartOf="@id/tv_date_nov"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_nov" />
+            <!--  End Tanggal Bayar  -->
+
+            <!--  Biaya  -->
+            <TextView
+                android:id="@+id/tv_cash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="12dp"
+                android:text="Biaya"
+                android:textColor="@color/black_1"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/tv_year"
+                app:layout_constraintTop_toBottomOf="@+id/tv_year" />
+
+            <TextView
+                android:id="@+id/tv_cash_jan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Rp.50.000"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash" />
+
+            <TextView
+                android:id="@+id/tv_cash_feb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_jan"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash_jan" />
+
+            <TextView
+                android:id="@+id/tv_cash_mar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_feb"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash_feb" />
+
+            <TextView
+                android:id="@+id/tv_cash_apr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_mar"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash_mar" />
+
+            <TextView
+                android:id="@+id/tv_cash_may"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_apr"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash_apr" />
+
+            <TextView
+                android:id="@+id/tv_cash_jun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_may"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash_may" />
+
+            <TextView
+                android:id="@+id/tv_cash_jul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_jun"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash_jun" />
+
+            <TextView
+                android:id="@+id/tv_cash_aug"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_jul"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash_jul" />
+
+            <TextView
+                android:id="@+id/tv_cash_sep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_aug"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash_aug" />
+
+            <TextView
+                android:id="@+id/tv_cash_oct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_sep"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash_sep" />
+
+            <TextView
+                android:id="@+id/tv_cash_nov"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_oct"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash_oct" />
+
+            <TextView
+                android:id="@+id/tv_cash_dec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/null_value"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_cash_nov"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cash_nov" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

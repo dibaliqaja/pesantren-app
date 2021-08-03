@@ -7,10 +7,11 @@
         <entry key="app/src/main/res/drawable/ic_payment.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/layout/activity_cash_book.xml" value="0.1638888888888889" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.1671875" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.2402694610778443" />
         <entry key="app/src/main/res/layout/activity_syahriah.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.1671875" />
         <entry key="app/src/main/res/layout/fragment_riwayat.xml" value="0.1671875" />
-        <entry key="app/src/main/res/layout/fragment_spp.xml" value="0.1671875" />
+        <entry key="app/src/main/res/layout/fragment_spp.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_cash_book.xml" value="0.1671875" />
         <entry key="app/src/main/res/layout/item_syahriah_riwayat.xml" value="0.22" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1638888888888889" />

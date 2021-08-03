@@ -5,13 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dibaliqaja.ponpesapp.databinding.ItemSyahriahRiwayatBinding
+import com.dibaliqaja.ponpesapp.helper.formatDate
 import com.dibaliqaja.ponpesapp.helper.rupiah
-import com.dibaliqaja.ponpesapp.model.SyahriahHistory
+import com.dibaliqaja.ponpesapp.model.Syahriah
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class RiwayatAdapter(private val list: ArrayList<SyahriahHistory>): RecyclerView.Adapter<RiwayatAdapter.RiwayatViewHolder>() {
+class RiwayatAdapter(private val list: ArrayList<Syahriah>): RecyclerView.Adapter<RiwayatAdapter.RiwayatViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RiwayatViewHolder {
         val binding = ItemSyahriahRiwayatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -21,11 +22,12 @@ class RiwayatAdapter(private val list: ArrayList<SyahriahHistory>): RecyclerView
     override fun getItemCount() = list.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addList(items: ArrayList<SyahriahHistory>) {
+    fun addList(items: ArrayList<Syahriah>) {
         list.addAll(items)
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun clear() {
         list.clear()
         notifyDataSetChanged()
@@ -37,7 +39,7 @@ class RiwayatAdapter(private val list: ArrayList<SyahriahHistory>): RecyclerView
             with(list[position]) {
                 binding.apply {
                     tvItemMonth.text = "$month $year"
-                    tvItemDate.text = SimpleDateFormat("d MMMM yyyy", Locale("id")).format(date)
+                    tvItemDate.text = formatDate(date)
                     tvItemCash.text = rupiah(spp)
                 }
             }
