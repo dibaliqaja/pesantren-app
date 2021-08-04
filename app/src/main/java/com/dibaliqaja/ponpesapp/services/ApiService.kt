@@ -21,6 +21,7 @@ interface ApiService {
     @POST("profile")
     fun postUpdateProfile(
         @Header("Authorization") authorization: String,
+        @Part("email") email: RequestBody,
         @Part("name") name: RequestBody,
         @Part("address") address: RequestBody,
         @Part("birth_place") birthPlace: RequestBody,

@@ -123,7 +123,8 @@ class EditProfileActivity : AppCompatActivity() {
             @SuppressLint("SimpleDateFormat")
             override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
                 val listResponse = response.body()?.data
-                val name: String = listResponse!!.name
+                val email: String = listResponse!!.email
+                val name: String = listResponse.name
                 val address: String = listResponse.address
                 val birthPlace: String = listResponse.birthPlace
                 val birthDate: Date = listResponse.birthDate
@@ -143,6 +144,7 @@ class EditProfileActivity : AppCompatActivity() {
                 val photo: String? = listResponse.photo
 
                 binding.apply {
+                    edtEmail.setText(email)
                     edtName.setText(name)
                     edtAddress.setText(address)
                     edtBirthPlace.setText(birthPlace)
@@ -183,6 +185,7 @@ class EditProfileActivity : AppCompatActivity() {
         progressDialog.setMessage("Loading...")
         progressDialog.show()
 
+        val rEmail = binding.edtEmail.text.toString().trim().toRequestBody("multipart/form-data".toMediaTypeOrNull())
         val rName = binding.edtName.text.toString().trim().toRequestBody("multipart/form-data".toMediaTypeOrNull())
         val rAddress = binding.edtAddress.text.toString().trim().toRequestBody("multipart/form-data".toMediaTypeOrNull())
         val rBirthPlace = binding.edtBirthPlace.text.toString().trim().toRequestBody("multipart/form-data".toMediaTypeOrNull())
@@ -211,6 +214,7 @@ class EditProfileActivity : AppCompatActivity() {
         if (progressDialog.isShowing) progressDialog.dismiss()
         RetrofitClient.apiService.postUpdateProfile(
             "Bearer " + preferencesHelper.getString(Constant.prefToken),
+            rEmail,
             rName,
             rAddress,
             rBirthPlace,
@@ -239,6 +243,10 @@ class EditProfileActivity : AppCompatActivity() {
                 } else {
                     try {
                         val jsonObject = JSONObject(response.errorBody()!!.string()).getJSONObject("data")
+                        if (jsonObject.has("email")) {
+                            val email: String = jsonObject.getJSONArray( "email")[0].toString()
+                            binding.tilEmail.error = email
+                        }
                         if (jsonObject.has("name")) {
                             val name: String = jsonObject.getJSONArray( "name")[0].toString()
                             binding.tilName.error = name
@@ -327,6 +335,11 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun checkFields(): Boolean {
         binding.apply {
+            if (edtEmail.text!!.isEmpty()) {
+                tilEmail.error = "This field is required"
+                return false
+            } else { tilEmail.error = null }
+
             if (edtName.text!!.isEmpty()) {
                 tilName.error = "This field is required"
                 return false
