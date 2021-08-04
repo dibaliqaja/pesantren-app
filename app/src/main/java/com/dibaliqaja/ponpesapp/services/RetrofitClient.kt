@@ -10,7 +10,7 @@ object RetrofitClient {
     private const val baseUrl = "http://192.168.43.58:8000/api/v1/"
 
     private val client = OkHttpClient.Builder()
-        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC))
+        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         .build()
 
     private val gson = GsonBuilder().setLenient().create()

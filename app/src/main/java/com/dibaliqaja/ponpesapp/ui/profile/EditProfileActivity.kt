@@ -34,6 +34,8 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody.Part.Companion.createFormData
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONException
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -234,6 +236,83 @@ class EditProfileActivity : AppCompatActivity() {
                     finish()
                     startActivity(Intent(baseContext, ProfileActivity::class.java))
                     Toast.makeText(baseContext, "Successfully updated", Toast.LENGTH_LONG).show()
+                } else {
+                    try {
+                        val jsonObject = JSONObject(response.errorBody()!!.string()).getJSONObject("data")
+                        if (jsonObject.has("name")) {
+                            val name: String = jsonObject.getJSONArray( "name")[0].toString()
+                            binding.tilName.error = name
+                        }
+                        if (jsonObject.has("address")) {
+                            val address: String = jsonObject.getJSONArray( "address")[0].toString()
+                            binding.tilAddress.error = address
+                        }
+                        if (jsonObject.has("birth_place")) {
+                            val birthPlace: String = jsonObject.getJSONArray( "birth_place")[0].toString()
+                            binding.tilBirthPlace.error = birthPlace
+                        }
+                        if (jsonObject.has("birth_date")) {
+                            val birthDate: String = jsonObject.getJSONArray( "birth_date")[0].toString()
+                            binding.tilBirthDate.error = birthDate
+                        }
+                        if (jsonObject.has("phone")) {
+                            val phone: String = jsonObject.getJSONArray( "phone")[0].toString()
+                            binding.tilPhone.error = phone
+                        }
+                        if (jsonObject.has("school_old")) {
+                            val schoolOld: String = jsonObject.getJSONArray( "school_old")[0].toString()
+                            binding.tilSchoolOld.error = schoolOld
+                        }
+                        if (jsonObject.has("school_address_old")) {
+                            val schoolAddressOld: String = jsonObject.getJSONArray( "school_address_old")[0].toString()
+                            binding.tilSchoolAddressOld.error = schoolAddressOld
+                        }
+                        if (jsonObject.has("school_current")) {
+                            val schoolCurrent: String = jsonObject.getJSONArray( "school_current")[0].toString()
+                            binding.tilSchoolCurrent.error = schoolCurrent
+                        }
+                        if (jsonObject.has("school_address_current")) {
+                            val schoolAddressCurrent: String = jsonObject.getJSONArray( "school_address_current")[0].toString()
+                            binding.tilSchoolAddressCurrent.error = schoolAddressCurrent
+                        }
+                        if (jsonObject.has("father_name")) {
+                            val fatherName: String = jsonObject.getJSONArray( "father_name")[0].toString()
+                            binding.tilFatherName.error = fatherName
+                        }
+                        if (jsonObject.has("mother_name")) {
+                            val motherName: String = jsonObject.getJSONArray( "mother_name")[0].toString()
+                            binding.tilMotherName.error = motherName
+                        }
+                        if (jsonObject.has("father_job")) {
+                            val fatherJob: String = jsonObject.getJSONArray( "father_job")[0].toString()
+                            binding.tilFatherJob.error = fatherJob
+                        }
+                        if (jsonObject.has("mother_job")) {
+                            val motherJob: String = jsonObject.getJSONArray( "mother_job")[0].toString()
+                            binding.tilMotherJob.error = motherJob
+                        }
+                        if (jsonObject.has("parent_phone")) {
+                            val parentPhone: String = jsonObject.getJSONArray( "parent_phone")[0].toString()
+                            binding.tilParentPhone.error = parentPhone
+                        }
+                        if (jsonObject.has("entry_year")) {
+                            val entryYear: String = jsonObject.getJSONArray( "entry_year")[0].toString()
+                            binding.tilEntryYear.error = entryYear
+                        }
+                        if (jsonObject.has("year_out")) {
+                            val yearOut: String = jsonObject.getJSONArray( "year_out")[0].toString()
+                            binding.tilYearOut.error = yearOut
+                        }
+                    } catch (e: JSONException) {
+                        Log.e("Response Error: ", e.toString())
+                    }
+                }
+
+                if (response.code() == 401) {
+                    preferencesHelper.clear()
+                    Toast.makeText(applicationContext,"Token expired", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@EditProfileActivity, LoginActivity::class.java))
+                    finish()
                 }
             }
 

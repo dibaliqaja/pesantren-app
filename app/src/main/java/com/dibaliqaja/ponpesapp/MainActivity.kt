@@ -85,6 +85,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 if (response.code() == 401) {
                     preferencesHelper.clear()
+                    Toast.makeText(applicationContext,"Token expired", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                     finish()
                 }

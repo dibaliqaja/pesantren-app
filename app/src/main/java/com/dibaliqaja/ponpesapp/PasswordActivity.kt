@@ -74,6 +74,12 @@ class PasswordActivity : AppCompatActivity() {
                         Toast.makeText(this@PasswordActivity, "Password Lama Salah!", Toast.LENGTH_SHORT).show()
                     }
                 }
+                if (response.code() == 401) {
+                    preferencesHelper.clear()
+                    Toast.makeText(applicationContext,"Token expired", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@PasswordActivity, LoginActivity::class.java))
+                    finish()
+                }
             }
 
             override fun onFailure(call: Call<PasswordResponse>, t: Throwable) {

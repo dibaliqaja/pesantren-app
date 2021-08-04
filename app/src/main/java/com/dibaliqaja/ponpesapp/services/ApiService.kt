@@ -3,6 +3,7 @@ package com.dibaliqaja.ponpesapp.services
 import com.dibaliqaja.ponpesapp.model.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -10,8 +11,8 @@ interface ApiService {
     @POST("login")
     fun login(@Body login: LoginRequest): Call<LoginResponse>
 
-    // @POST("logout")
-    // fun refresh(@Header("Authorization") authorization: String): Call<LoginResponse>
+    @POST("logout")
+    fun logout(@Header("Authorization") authorization: String): Call<JSONObject>
 
     @GET("profile")
     fun getProfile(@Header("Authorization") authorization: String): Call<ProfileResponse>

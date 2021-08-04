@@ -37,6 +37,11 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
         setContentView(binding.root)
         preferencesHelper = PreferencesHelper(this)
 
+        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+
         layoutManager = LinearLayoutManager(this)
         binding.swipeRefresh.setOnRefreshListener(this)
         setupRecyclerView()
@@ -66,14 +71,6 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
                 }
             }
         })
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
     }
 
     private fun getCashBook(isOnRefresh: Boolean) {
