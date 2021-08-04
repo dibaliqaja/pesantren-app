@@ -23,10 +23,10 @@
 
             <ImageView
                 android:id="@+id/iv_logo"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:contentDescription="@string/pesantren_logo"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_centerHorizontal="true"
+                android:contentDescription="@string/pesantren_logo"
                 android:src="@drawable/ic_logo" />
 
         </RelativeLayout>
@@ -35,19 +35,19 @@
             android:id="@+id/relative_tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="18dp">
 
             <TextView
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:gravity="center"
                 android:text="@string/pondok_pesantren_ash_shomadiyah_komplek_tengah"
                 android:textAlignment="center"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_centerHorizontal="true"
-                android:textColor="?android:attr/textColorPrimary" />
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -98,6 +98,19 @@
             android:text="@string/login"
             android:textSize="16sp"
             android:layout_marginTop="24dp" />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/version_1_0_0"
+            android:textAlignment="center"
+            android:layout_gravity="bottom|center"
+            android:layout_marginTop="130dp"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="11sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

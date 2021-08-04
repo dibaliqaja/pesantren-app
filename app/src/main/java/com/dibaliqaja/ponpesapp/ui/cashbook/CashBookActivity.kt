@@ -61,9 +61,7 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
 
                         if (!TextUtils.isEmpty(binding.edtSearch.toString())) {
                             getSearchCashBook(false)
-                        } else {
-                            getCashBook(false)
-                        }
+                        } else { getCashBook(false) }
                     }
                 }
             }
@@ -89,10 +87,7 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
                 val listResponse = response.body()?.data
                 binding.tvSaldoPrice.text = rupiah(response.body()?.saldo!!.toDouble())
 
-                Log.d("Response: ", listResponse.toString())
-                if (listResponse != null) {
-                    adapter.addList(listResponse)
-                }
+                if (listResponse != null) { adapter.addList(listResponse) }
                 if (page == totalPage) {
                     binding.progressBar.visibility = View.GONE
                 } else {
@@ -105,9 +100,8 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
             override fun onFailure(call: Call<CashBookResponse>, t: Throwable) {
                 binding.progressBar.visibility = View.GONE
                 binding.swipeRefresh.isRefreshing = false
-                Toast.makeText(baseContext, "Failed load data", Toast.LENGTH_SHORT).show()
-                preferencesHelper.clear()
-                Log.d("Failure: ", t.message.toString())
+                Toast.makeText(applicationContext,"Something went wrong", Toast.LENGTH_SHORT).show()
+                Log.e("Failure: ", t.message.toString())
             }
 
         })
@@ -125,10 +119,7 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
                 val listResponse = response.body()?.data
                 binding.tvSaldoPrice.text = rupiah(response.body()?.saldo!!.toDouble())
 
-                Log.d("Response: ", listResponse.toString())
-                if (listResponse != null) {
-                    adapter.addList(listResponse)
-                }
+                if (listResponse != null) { adapter.addList(listResponse) }
                 if (page == totalPage) {
                     binding.progressBar.visibility = View.GONE
                 } else {
@@ -141,9 +132,8 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
             override fun onFailure(call: Call<CashBookResponse>, t: Throwable) {
                 binding.progressBar.visibility = View.GONE
                 binding.swipeRefresh.isRefreshing = false
-                Toast.makeText(baseContext, "Failed load data", Toast.LENGTH_SHORT).show()
-                preferencesHelper.clear()
-                Log.d("Failure: ", t.message.toString())
+                Toast.makeText(applicationContext,"Something went wrong", Toast.LENGTH_SHORT).show()
+                Log.e("Failure: ", t.message.toString())
             }
 
         })

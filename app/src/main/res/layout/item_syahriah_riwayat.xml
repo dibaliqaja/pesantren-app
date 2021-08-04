@@ -5,13 +5,13 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp">
+    android:layout_marginBottom="8dp">
 
     <ImageView
         android:id="@+id/iv_cash"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:padding="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="12dp"
         android:background="@drawable/ic_round_white_border"
         android:src="@drawable/ic_payment"
         android:contentDescription="@string/cash_image"
@@ -19,7 +19,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout1"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/iv_cash"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:textSize="17sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:maxLines="2"
             android:textColor="@color/black_1"
@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:maxLines="1"
             android:textAlignment="textEnd"

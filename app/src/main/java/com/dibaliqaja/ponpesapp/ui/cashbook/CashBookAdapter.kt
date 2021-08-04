@@ -8,6 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.dibaliqaja.ponpesapp.R
 import com.dibaliqaja.ponpesapp.databinding.ItemCashBookBinding
+import com.dibaliqaja.ponpesapp.helper.formatDate
 import com.dibaliqaja.ponpesapp.helper.rupiah
 import com.dibaliqaja.ponpesapp.model.CashBook
 import java.text.SimpleDateFormat
@@ -44,7 +45,7 @@ class CashBookAdapter(private val list: ArrayList<CashBook>): RecyclerView.Adapt
             with(list[position]) {
                 binding.apply {
                     tvItemNote.text = note
-                    tvItemDate.text = SimpleDateFormat("d MMMM yyyy", Locale("id")).format(date)
+                    tvItemDate.text = formatDate(date)
                     if (debit == 0.00) {
                         ivCash.setImageResource(R.drawable.ic_cash_out)
                         ivCash.setColorFilter(holder.itemView.context.getColor(R.color.red_2))

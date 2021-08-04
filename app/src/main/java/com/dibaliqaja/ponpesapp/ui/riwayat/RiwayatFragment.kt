@@ -89,10 +89,7 @@ class RiwayatFragment : Fragment() {
                 totalPage = response.body()?.totalPage!!
                 val listResponse = response.body()?.data
 
-                Log.d("Response: ", listResponse.toString())
-                if (listResponse != null) {
-                    adapter.addList(listResponse)
-                }
+                if (listResponse != null) { adapter.addList(listResponse) }
                 if (page == totalPage) {
                     binding.progressBar.visibility = View.GONE
                 } else {
@@ -103,9 +100,8 @@ class RiwayatFragment : Fragment() {
 
             override fun onFailure(call: Call<SyahriahHistoryResponse>, t: Throwable) {
                 binding.progressBar.visibility = View.GONE
-                Toast.makeText(context, "Failed load data", Toast.LENGTH_SHORT).show()
-                preferencesHelper.clear()
-                Log.d("Failure: ", t.message.toString())
+                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show()
+                Log.e("Failure: ", t.message.toString())
             }
 
         })
@@ -123,10 +119,7 @@ class RiwayatFragment : Fragment() {
                 totalPage = response.body()?.totalPage!!
                 val listResponse = response.body()?.data
 
-                Log.d("Response: ", listResponse.toString())
-                if (listResponse != null) {
-                    adapter.addList(listResponse)
-                }
+                if (listResponse != null) { adapter.addList(listResponse) }
                 if (page == totalPage) {
                     binding.progressBar.visibility = View.GONE
                 } else {
@@ -137,9 +130,8 @@ class RiwayatFragment : Fragment() {
 
             override fun onFailure(call: Call<SyahriahHistoryResponse>, t: Throwable) {
                 binding.progressBar.visibility = View.GONE
-                Toast.makeText(context, "Failed load data", Toast.LENGTH_SHORT).show()
-                preferencesHelper.clear()
-                Log.d("Failure: ", t.message.toString())
+                Toast.makeText(context,"Something went wrong", Toast.LENGTH_SHORT).show()
+                Log.e("Failure: ", t.message.toString())
             }
 
         })

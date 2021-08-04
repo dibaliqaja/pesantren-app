@@ -10,9 +10,6 @@ interface ApiService {
     @POST("login")
     fun login(@Body login: LoginRequest): Call<LoginResponse>
 
-    // @POST("refresh")
-    // fun refresh(@Header("Authorization") authorization: String): Call<LoginResponse>
-
     // @POST("logout")
     // fun refresh(@Header("Authorization") authorization: String): Call<LoginResponse>
 
@@ -43,7 +40,7 @@ interface ApiService {
     ): Call<ProfileResponse>
 
     @FormUrlEncoded
-    @PATCH("password")
+    @POST("password")
     fun updatePassword(
         @Header("Authorization") authorization: String,
         @Field("current_password") oldPassword: String,

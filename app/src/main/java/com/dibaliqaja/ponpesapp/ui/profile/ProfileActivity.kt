@@ -20,7 +20,6 @@ import com.dibaliqaja.ponpesapp.services.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
 import java.util.*
 
 class ProfileActivity : AppCompatActivity() {
@@ -35,7 +34,12 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
         preferencesHelper = PreferencesHelper(this)
 
-        preferencesHelper.getString(Constant.prefToken)?.let { getProfile(it) }
+        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        } else {
+            preferencesHelper.getString(Constant.prefToken)?.let { getProfile(it) }
+        }
 
         swipeRefreshLayout = binding.swipeRefresh
         swipeRefreshLayout.setOnRefreshListener {
@@ -44,7 +48,7 @@ class ProfileActivity : AppCompatActivity() {
                 swipeRefreshLayout.isRefreshing = false
             } catch (e: Exception) {
                 swipeRefreshLayout.isRefreshing = false
-                preferencesHelper.clear()
+                Toast.makeText(applicationContext,"Something went wrong", Toast.LENGTH_SHORT).show()
                 Log.e("Failure: ", e.message.toString())
             }
         }
@@ -52,16 +56,9 @@ class ProfileActivity : AppCompatActivity() {
         binding.apply {
             btnEditProfil.setOnClickListener {
                 startActivity(Intent(baseContext, EditProfileActivity::class.java))
+                finish()
             }
             btnLogout.setOnClickListener { logout() }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
         }
     }
 
@@ -75,7 +72,7 @@ class ProfileActivity : AppCompatActivity() {
             ) {
                 val profileResponse = response.body()?.data
                 val email: String = profileResponse!!.email
-                val name: String = profileResponse!!.name
+                val name: String = profileResponse.name
                 val address: String = profileResponse.address
                 val birthPlace: String = profileResponse.birthPlace
                 val birthDate: Date = profileResponse.birthDate
@@ -113,9 +110,7 @@ class ProfileActivity : AppCompatActivity() {
                     tvEntryYear.text = entryYear.toString()
                     if(yearOut !== null) {
                         tvYearOut.text = yearOut.toString()
-                    } else {
-                        tvYearOut.text = "-"
-                    }
+                    } else { tvYearOut.text = "-" }
 
                     Glide.with(this@ProfileActivity)
                         .load(photo)
@@ -126,7 +121,7 @@ class ProfileActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
-                preferencesHelper.clear()
+                Toast.makeText(applicationContext,"Something went wrong", Toast.LENGTH_SHORT).show()
                 Log.e("Failure: ", t.message.toString())
             }
 

@@ -65,11 +65,10 @@ class LoginActivity : AppCompatActivity() {
                     preferencesHelper.put(Constant.prefIsLogin, true)
                     preferencesHelper.put(Constant.prefToken, token)
 
-                    Toast.makeText(baseContext, "Login success", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "Login berhasil", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(baseContext, MainActivity::class.java))
                     finish()
-                }
-                else {
+                } else {
                     try {
                         val jsonObject = JSONObject(response.errorBody()!!.string()).getJSONObject("message")
                         if (jsonObject.has("email")) {
@@ -81,15 +80,15 @@ class LoginActivity : AppCompatActivity() {
                             binding.tilPassword.error = password
                         }
                     } catch (e: JSONException) {
-                        Toast.makeText(this@LoginActivity, "Wrong email or password!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity, "Email atau password salah!", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 if (progressDialog.isShowing) progressDialog.dismiss()
-                Toast.makeText(baseContext, t.message.toString(), Toast.LENGTH_SHORT).show()
-//                Log.e("Failure: ", t.message.toString())
+                Toast.makeText(applicationContext,"Something went wrong", Toast.LENGTH_SHORT).show()
+                Log.e("Failure: ", t.message.toString())
             }
 
         })
@@ -97,17 +96,15 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkFields(): Boolean {
         if (binding.edtEmail.text!!.isEmpty()) {
-            binding.tilEmail.error = "This field is required"
+            binding.tilEmail.error = "This email field is required"
             return false
-        } else {
-            binding.tilEmail.error = null
-        }
+        } else { binding.tilEmail.error = null }
+
         if (binding.edtPassword.text!!.isEmpty()) {
-            binding.tilPassword.error = "This field is required"
+            binding.tilPassword.error = "This password field is required"
             return false
-        } else {
-            binding.tilPassword.error = null
-        }
+        } else { binding.tilPassword.error = null }
+
         return true
     }
 

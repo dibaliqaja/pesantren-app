@@ -59,7 +59,12 @@ class EditProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
         preferencesHelper = PreferencesHelper(this)
 
-        preferencesHelper.getString(Constant.prefToken)?.let { getProfile(it) }
+        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        } else {
+            preferencesHelper.getString(Constant.prefToken)?.let { getProfile(it) }
+        }
 
         binding.apply {
             fabPhoto.setOnClickListener {
@@ -73,14 +78,6 @@ class EditProfileActivity : AppCompatActivity() {
             btnSave.setOnClickListener {
                 if (checkFields()) updateProfile()
             }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
         }
     }
 
@@ -161,9 +158,7 @@ class EditProfileActivity : AppCompatActivity() {
                     edtEntryYear.setText(entryYear.toString())
                     if(yearOut !== null) {
                         edtYearOut.setText(yearOut.toString())
-                    } else {
-                        edtYearOut.setText("")
-                    }
+                    } else { edtYearOut.setText("") }
 
                     Glide.with(this@EditProfileActivity)
                         .load(photo)
@@ -174,8 +169,8 @@ class EditProfileActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
-                preferencesHelper.clear()
-                Log.d("Failure: ", t.message.toString())
+                Toast.makeText(applicationContext,"Something went wrong", Toast.LENGTH_SHORT).show()
+                Log.e("Failure: ", t.message.toString())
             }
         })
     }
@@ -235,7 +230,6 @@ class EditProfileActivity : AppCompatActivity() {
             Callback<ProfileResponse> {
             override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {
                 if (response.isSuccessful) {
-//                    Log.e("Response: ", response.body()?.data.toString())
                     if (progressDialog.isShowing) progressDialog.dismiss()
                     finish()
                     startActivity(Intent(baseContext, ProfileActivity::class.java))
@@ -245,8 +239,7 @@ class EditProfileActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
                 if (progressDialog.isShowing) progressDialog.dismiss()
-                Toast.makeText(baseContext, "Failed", Toast.LENGTH_SHORT).show()
-                preferencesHelper.clear()
+                Toast.makeText(applicationContext,"Something went wrong", Toast.LENGTH_SHORT).show()
                 Log.e("Failure: ", t.message.toString())
             }
 

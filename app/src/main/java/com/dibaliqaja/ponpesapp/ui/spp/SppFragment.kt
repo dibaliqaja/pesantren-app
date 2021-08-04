@@ -42,6 +42,11 @@ class SppFragment : Fragment() {
                     getSearchYear(it, rSearch.toInt())
                     getSearchSPP(it, rSearch.toInt())
                 }
+            } else {
+                preferencesHelper.getString(Constant.prefToken)?.let {
+                    getYear(it)
+                    getSPP(it)
+                }
             }
         }
 

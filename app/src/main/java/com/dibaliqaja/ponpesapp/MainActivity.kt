@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.dibaliqaja.ponpesapp.databinding.ActivityMainBinding
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 swipeRefreshLayout.isRefreshing = false
             } catch (e: Exception) {
                 swipeRefreshLayout.isRefreshing = false
-                preferencesHelper.clear()
+                Toast.makeText(applicationContext,"Something went wrong", Toast.LENGTH_SHORT).show()
                 Log.e("Failure: ", e.message.toString())
             }
         }
@@ -82,10 +83,15 @@ class MainActivity : AppCompatActivity() {
                             .into(ivPhoto)
                     }
                 }
+                if (response.code() == 401) {
+                    preferencesHelper.clear()
+                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                    finish()
+                }
             }
 
             override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
-                preferencesHelper.clear()
+                Toast.makeText(applicationContext,"Something went wrong", Toast.LENGTH_SHORT).show()
                 Log.e("Failure: ", t.message.toString())
             }
         })

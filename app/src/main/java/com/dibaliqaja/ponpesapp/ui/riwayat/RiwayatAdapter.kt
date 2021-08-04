@@ -8,8 +8,6 @@ import com.dibaliqaja.ponpesapp.databinding.ItemSyahriahRiwayatBinding
 import com.dibaliqaja.ponpesapp.helper.formatDate
 import com.dibaliqaja.ponpesapp.helper.rupiah
 import com.dibaliqaja.ponpesapp.model.Syahriah
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class RiwayatAdapter(private val list: ArrayList<Syahriah>): RecyclerView.Adapter<RiwayatAdapter.RiwayatViewHolder>() {

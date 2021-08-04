@@ -28,16 +28,13 @@ class PasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
         preferencesHelper = PreferencesHelper(this)
 
-        binding.btnSave.setOnClickListener {
-            if (checkFields()) preferencesHelper.getString(Constant.prefToken)?.let { update(it) }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
         if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
+        }
+
+        binding.btnSave.setOnClickListener {
+            if (checkFields()) preferencesHelper.getString(Constant.prefToken)?.let { update(it) }
         }
     }
 
@@ -54,9 +51,6 @@ class PasswordActivity : AppCompatActivity() {
             override fun onResponse(call: Call<PasswordResponse>, response: Response<PasswordResponse>) {
                 if (progressDialog.isShowing) progressDialog.dismiss()
                 if (response.isSuccessful) {
-                    val passwordResponse = response.body()?.data
-//                    Log.e("Response: ", passwordResponse.toString())
-
                     Toast.makeText(baseContext, "Update password berhasil", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(baseContext, MainActivity::class.java))
                     finish()
@@ -84,8 +78,8 @@ class PasswordActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<PasswordResponse>, t: Throwable) {
                 if (progressDialog.isShowing) progressDialog.dismiss()
-                preferencesHelper.clear()
-                Log.e("Failure: ", t.toString())
+                Toast.makeText(applicationContext,"Something went wrong", Toast.LENGTH_SHORT).show()
+                Log.e("Failure: ", t.message.toString())
             }
 
         })
@@ -93,23 +87,20 @@ class PasswordActivity : AppCompatActivity() {
 
     private fun checkFields(): Boolean {
         if (binding.edtOldPassword.text!!.isEmpty()) {
-            binding.tilOldPassword.error = "This field is required"
+            binding.tilOldPassword.error = "This old password field is required"
             return false
-        } else {
-            binding.tilOldPassword.error = null
-        }
+        } else { binding.tilOldPassword.error = null }
+
         if (binding.edtNewPassword.text!!.isEmpty()) {
-            binding.tilNewPassword.error = "This field is required"
+            binding.tilNewPassword.error = "This current password field is required"
             return false
-        } else {
-            binding.tilNewPassword.error = null
-        }
+        } else { binding.tilNewPassword.error = null }
+
         if (binding.edtPasswordConfirmation.text!!.isEmpty()) {
-            binding.tilPasswordConfirmation.error = "This field is required"
+            binding.tilPasswordConfirmation.error = "This current password confirm field is required"
             return false
-        } else {
-            binding.tilPasswordConfirmation.error = null
-        }
+        } else { binding.tilPasswordConfirmation.error = null }
+
         return true
     }
 }
