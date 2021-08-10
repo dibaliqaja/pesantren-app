@@ -38,7 +38,7 @@ class RiwayatAdapter(private val list: ArrayList<Syahriah>): RecyclerView.Adapte
                 binding.apply {
                     tvItemMonth.text = "$month $year"
                     tvItemDate.text = formatDate(date)
-                    tvItemCash.text = rupiah(spp)
+                    tvItemCash.text = rupiah(spp).dropLast(3)
                 }
             }
         }

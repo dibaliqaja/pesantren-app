@@ -49,11 +49,11 @@ class CashBookAdapter(private val list: ArrayList<CashBook>): RecyclerView.Adapt
                     if (debit == 0.00) {
                         ivCash.setImageResource(R.drawable.ic_cash_out)
                         ivCash.setColorFilter(holder.itemView.context.getColor(R.color.red_2))
-                        tvItemCash.text = "-" + rupiah(credit)
+                        tvItemCash.text = "-" + rupiah(credit).dropLast(3)
                     } else if (credit == 0.00) {
                         ivCash.setImageResource(R.drawable.ic_cash_in)
                         ivCash.setColorFilter(holder.itemView.context.getColor(R.color.teal_1))
-                        tvItemCash.text = rupiah(debit)
+                        tvItemCash.text = rupiah(debit).dropLast(3)
                     }
                 }
             }

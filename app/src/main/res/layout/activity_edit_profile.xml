@@ -36,8 +36,7 @@
                 android:src="@drawable/ic_baseline_camera_alt_24"
                 android:focusable="true"
                 android:contentDescription="@string/camera_button"
-                app:tint="@android:color/white"
-                app:elevation="6dp" />
+                app:tint="@android:color/white" />
 
         </FrameLayout>
 
