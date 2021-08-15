@@ -1,7 +1,9 @@
 package com.dibaliqaja.ponpesapp.ui.profile
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -34,6 +36,8 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         preferencesHelper = PreferencesHelper(this)
+
+        checkConnectivity()
 
         if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -177,5 +181,16 @@ class ProfileActivity : AppCompatActivity() {
             dialog.cancel()
         }
         alertDialog.show()
+    }
+
+    private fun checkConnectivity() {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = cm.activeNetworkInfo
+        val isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting
+        if (!isConnected) {
+            android.app.AlertDialog.Builder(this).setTitle("No Internet Connection")
+                .setMessage("Please check your internet connection and try again")
+                .setPositiveButton(android.R.string.ok) { _, _ -> }.show()
+        }
     }
 }

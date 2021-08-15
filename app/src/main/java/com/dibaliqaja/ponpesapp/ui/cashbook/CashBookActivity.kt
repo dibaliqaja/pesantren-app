@@ -1,6 +1,9 @@
 package com.dibaliqaja.ponpesapp.ui.cashbook
 
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -36,6 +39,8 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
         binding = ActivityCashBookBinding.inflate(layoutInflater)
         setContentView(binding.root)
         preferencesHelper = PreferencesHelper(this)
+
+        checkConnectivity()
 
         if (!preferencesHelper.getBoolean(Constant.prefIsLogin)) {
             startActivity(Intent(this, LoginActivity::class.java))
@@ -153,6 +158,17 @@ class CashBookActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListen
             getSearchCashBook(true)
         } else {
             getCashBook(true)
+        }
+    }
+
+    private fun checkConnectivity() {
+        val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = cm.activeNetworkInfo
+        val isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting
+        if (!isConnected) {
+            AlertDialog.Builder(this).setTitle("No Internet Connection")
+                .setMessage("Please check your internet connection and try again")
+                .setPositiveButton(android.R.string.ok) { _, _ -> }.show()
         }
     }
 }
