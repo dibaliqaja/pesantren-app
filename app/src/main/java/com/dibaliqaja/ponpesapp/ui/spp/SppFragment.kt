@@ -12,6 +12,14 @@ import com.dibaliqaja.ponpesapp.helper.Constant
 import com.dibaliqaja.ponpesapp.helper.PreferencesHelper
 import com.dibaliqaja.ponpesapp.helper.formatDate
 import com.dibaliqaja.ponpesapp.helper.rupiah
+import android.R
+
+import android.widget.AutoCompleteTextView
+
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import java.util.*
+
 
 class SppFragment : Fragment() {
 
@@ -35,7 +43,11 @@ class SppFragment : Fragment() {
 
         val preferencesHelper = PreferencesHelper(requireContext())
 
-        binding.tilSearchYear.setEndIconOnClickListener {
+        val year = Calendar.getInstance().get(Calendar.YEAR)
+        val list = (1900..year).toList().reversed()
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.simple_spinner_dropdown_item, list)
+        binding.edtSearchYear.setAdapter(arrayAdapter)
+        binding.edtSearchYear.setOnItemClickListener { _, _, _, _ ->
             val rSearch = binding.edtSearchYear.text.toString().trim()
             if (!TextUtils.isEmpty(rSearch)) {
                 preferencesHelper.getString(Constant.prefToken)?.let {

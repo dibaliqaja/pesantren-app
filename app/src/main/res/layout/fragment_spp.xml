@@ -18,29 +18,27 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_search_year"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                app:endIconDrawable="@drawable/ic_baseline_search_24"
-                app:endIconMode="custom"
-                app:endIconTint="@color/black_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <AutoCompleteTextView
                     android:id="@+id/edt_search_year"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
-                    android:hint="@string/cari_berdasarkan_tahun"
+                    android:background="@null"
+                    android:textSize="15sp"
                     android:inputType="numberDecimal"
                     android:maxLines="1"
                     android:maxLength="4"
-                    android:textSize="15sp" />
+                    android:hint="@string/cari_berdasarkan_tahun"
+                    android:labelFor="@+id/label_search" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
