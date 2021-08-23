@@ -22,7 +22,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     app:endIconDrawable="@drawable/ic_baseline_search_24"
-                    app:endIconTint="@color/black_1"
+                    app:endIconTint="?android:attr/textColorPrimary"
                     app:endIconMode="custom">
 
                     <com.google.android.material.textfield.TextInputEditText

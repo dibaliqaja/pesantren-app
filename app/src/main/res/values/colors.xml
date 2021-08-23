@@ -13,6 +13,9 @@
     <color name="teal_1">#09CAB0</color>
     <color name="teal_2">#059783</color>
     <color name="teal_3">#DAFFFA</color>
+    <color name="teal_4">#005B55</color>
+    <color name="teal_5">#2D4C48</color>
+    <color name="teal_6">#076661</color>
     <color name="red_1">#FBBEC3</color>
     <color name="red_2">#F62A3B</color>
 </resources>

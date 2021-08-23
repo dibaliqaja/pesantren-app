@@ -36,7 +36,7 @@
                 android:src="@drawable/ic_baseline_camera_alt_24"
                 android:focusable="true"
                 android:contentDescription="@string/camera_button"
-                app:tint="@android:color/white" />
+                app:tint="?android:attr/textColorPrimaryInverse" />
 
         </FrameLayout>
 
@@ -175,6 +175,7 @@
                 android:layout_width="55dp"
                 android:layout_height="67dp"
                 android:drawableEnd="@drawable/ic_baseline_date_range_24"
+                android:drawableTint="?android:attr/textColorPrimaryInverse"
                 android:textSize="24sp"
                 android:layout_marginTop="12dp"
                 android:layout_alignParentEnd="true" />

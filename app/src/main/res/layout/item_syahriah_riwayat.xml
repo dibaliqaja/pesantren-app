@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -11,11 +12,15 @@
         android:id="@+id/iv_cash"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:padding="12dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="3dp"
         android:background="@drawable/ic_round_white_border"
-        android:src="@drawable/ic_payment"
         android:contentDescription="@string/cash_image"
-        android:layout_margin="3dp"/>
+        android:padding="12dp"
+        android:src="@drawable/ic_payment"
+        app:tint="?android:attr/textColorPrimary" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -34,7 +39,7 @@
             android:textSize="14sp"
             android:textStyle="bold"
             android:maxLines="2"
-            android:textColor="@color/black_1"
+            android:textColor="?android:attr/textColorPrimary"
             android:ellipsize="end"
             tools:text="Jan 2021"/>
 
@@ -45,7 +50,7 @@
             android:ellipsize="end"
             android:textStyle="italic"
             android:maxLines="1"
-            android:textColor="@color/black_1"
+            android:textColor="?android:attr/textColorPrimary"
             tools:text="10 January 2021"/>
 
     </LinearLayout>
@@ -66,7 +71,7 @@
             android:textStyle="bold"
             android:maxLines="1"
             android:textAlignment="textEnd"
-            android:textColor="@color/black_1"
+            android:textColor="?android:attr/textColorPrimary"
             android:ellipsize="end"
             android:text="Rp. 00.000.000" />
 
