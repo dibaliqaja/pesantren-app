@@ -6,4 +6,4 @@
 
 Repository Pesantren App,<br/>
 this app consume API from Project
-> https://github.com/dibaliqaja/pesantren-app
+> https://github.com/dibaliqaja/pesantren-cms
