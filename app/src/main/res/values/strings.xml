@@ -10,7 +10,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="pesantren_logo">Pesantren Logo</string>
-    <string name="pondok_pesantren_ash_shomadiyah_komplek_tengah">Pondok Pesantren Ash-Shomadiyah Komplek Tengah</string>
+    <string name="pondok_pesantren_app">Pondok Pesantren App</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
