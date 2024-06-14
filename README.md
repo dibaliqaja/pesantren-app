@@ -1,7 +1,7 @@
 # Pesantren App
 
 <h1 align="center">
-  <img src="https://i.imgur.com/WM2JpSy.png" width="130px"/><br/>
+  <img src="https://i.imgur.com/WM2JpSy.png" /><br/>
   Pesantren App
 </h1>
 
